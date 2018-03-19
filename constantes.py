@@ -14,7 +14,7 @@ phaut = "data/images/jamesstatiquedroite.png"
 taille_hero = 31
 largeur_hero = 25
 v_dplc = 6
-gravity = 13
+gravity = 15
 
 
 bgauche = "data/images/tirgauche.png"
