@@ -7,7 +7,7 @@ from constantes import *
 pygame.init()
 
 fenetre = pygame.display.set_mode((largeur_fenetre, hauteur_fenetre), RESIZABLE) 
-fond = pygame.image.load("background.jpg").convert()
+fond = pygame.image.load("data/images/background.jpg").convert()
 fenetre.blit(fond, (0,0))
 
 james = Perso(pdroites, pgauches, pdroited1, pdroited2, pgauched1, pgauched2)
