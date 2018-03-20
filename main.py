@@ -10,24 +10,31 @@ fenetre = pygame.display.set_mode((largeur_fenetre, hauteur_fenetre), RESIZABLE)
 fond = pygame.image.load("data/images/background.jpg").convert()
 fenetre.blit(fond, (0,0))
 
+#création du personnage avec ces différentes images : 
+#position droite statique, de déplacement 1 et 2 et position gauche statique, de déplacement 1 et 2
 james = Perso(pdroites, pgauches, pdroited1, pdroited2, pgauched1, pgauched2)
+
 plateformes = Plateformes(fenetre, "l1.txt")
 
 pygame.display.flip()
 
 continuer = 1
-keyState = [0, 0, 0, 0]
-dirPer = [0,0,0]
+keyState = [0, 0, 0, 0] # état du personnage lors de l'appuie d'une touche, respectivement droite, gauche, haut et bas
+dirPer = [0,0,0] # direction du personnage, pour avoir la direction de la boule
 tir = False
+
+
 
 while continuer:
 	pygame.time.Clock().tick(30)
 	for event in pygame.event.get():
+		
+		# pour un évènement de quitte
 		if event.type == QUIT:
 			continuer = 0
 
+		# pour un évènement de touche enfoncée
 		elif event.type == KEYDOWN:
-			#Touches de déplacement du perso
 			if event.key == K_RIGHT :
 				keyState[0] = 1
 			elif event.key == K_d :
@@ -57,9 +64,9 @@ while continuer:
 					boule = Projectile(james.x, james.y, bhaut, bdroite, bgauche, dirPer)
 					dirPer = [0,0,0]
 					tir = boule.shoot
-		elif event.type == KEYUP:
 					
-		#Touches de déplacement de Donkey Kong
+		# pour un évènement de touche relevé
+		elif event.type == KEYUP:
 			if event.key == K_RIGHT :
 				keyState[0] = 0
 			elif event.key == K_d :
@@ -77,7 +84,7 @@ while continuer:
 			elif event.key == K_s:
 				keyState[3] = 0	
 
-				
+		# pour un évènement avec souris : déplacement du personnage aux coordonées de la souris (si bug)
 		elif event.type == MOUSEBUTTONDOWN:
 			if event.button == 1:
 				james.x = event.pos[0]
