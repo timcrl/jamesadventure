@@ -25,6 +25,6 @@ bgauche = "data/images/tirgauche.png"
 bdroite = "data/images/tirdroite.png"
 bhaut = "data/images/tirhaut.png"
 
-
-
 image_plateforme = "data/images/plateforme2.png"
+
+background = "data/images/background640x480.jpg"

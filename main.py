@@ -7,7 +7,7 @@ from constantes import *
 pygame.init()
 
 fenetre = pygame.display.set_mode((largeur_fenetre, hauteur_fenetre), RESIZABLE) 
-fond = pygame.image.load("data/images/background.jpg").convert()
+fond = pygame.image.load(background).convert()
 fenetre.blit(fond, (0,0))
 
 #création du personnage avec ces différentes images : 
@@ -20,7 +20,7 @@ pygame.display.flip()
 
 continuer = 1
 keyState = [0, 0, 0, 0] # état du personnage lors de l'appuie d'une touche, respectivement droite, gauche, haut et bas
-dirPer = [0,0,0] # direction du personnage, pour avoir la direction de la boule
+dirPer = [0,0,0] # direction du personnage, pour avoir la direction de la boule : droite, gauche, haut
 tir = False
 
 
@@ -52,6 +52,7 @@ while continuer:
 			elif event.key == K_s:
 				keyState[3] = 1	
 			
+			# pour un évènement sur la barre espace : tir
 			elif event.key == K_SPACE : 
 				if tir == False :
 					if james.direction == james.droites or james.direction == james.droite1 or james.direction == james.droite2 :
@@ -93,10 +94,12 @@ while continuer:
 	james.deplacer(keyState, plateformes)
 	fenetre.blit(fond, (0,0))
 	fenetre.blit(james.direction, (james.x, james.y))
+	#test de tir pour la boule de feu 
 	if tir == True:
 		boule.tir(tir)
 		tir = boule.shoot
 		fenetre.blit(boule.direction, (boule.x, boule.y))
+		#si la boule sort de l'écran, on la supprime
 		if tir == False :	
 			del(boule)
 	
