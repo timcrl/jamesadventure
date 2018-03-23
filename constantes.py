@@ -1,8 +1,8 @@
 			#les différentes constantes utilisées
 
 
-largeur_fenetre = 640
-hauteur_fenetre = 480
+largeur_fenetre = 1080
+hauteur_fenetre = 600
 #1920x1080 lycee, 1366x758 maison, 640x480 pour plateformes
 
 taille_hero = 31
@@ -26,5 +26,8 @@ bdroite = "data/images/tirdroite.png"
 bhaut = "data/images/tirhaut.png"
 
 image_plateforme = "data/images/plateforme2.png"
+l1 = "l1.txt"
+l2 = "l2.txt"
 
-background = "data/images/background640x480.jpg"
+
+background = "data/images/background_futur.jpg"

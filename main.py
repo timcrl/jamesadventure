@@ -14,7 +14,7 @@ fenetre.blit(fond, (0,0))
 #position droite statique, de déplacement 1 et 2 et position gauche statique, de déplacement 1 et 2
 james = Perso(pdroites, pgauches, pdroited1, pdroited2, pgauched1, pgauched2)
 
-plateformes = Plateformes(fenetre, "l1.txt")
+plateformes = Plateformes(fenetre, l2)
 
 pygame.display.flip()
 
@@ -55,12 +55,12 @@ while continuer:
 			# pour un évènement sur la barre espace : tir
 			elif event.key == K_SPACE : 
 				if tir == False :
-					if james.direction == james.droites or james.direction == james.droite1 or james.direction == james.droite2 :
+					if james.direction == james.droites or james.direction == james.droite1 or james.direction == james.droite2 or james.direction == james.hautd:
 						dirPer[0] = 1
-					if james.direction == james.gauches or james.direction == james.gauche1 or james.direction == james.gauche2 :
+					if james.direction == james.gauches or james.direction == james.gauche1 or james.direction == james.gauche2 or james.direction == james.hautg:
 						dirPer[1] = 1
-					if james.direction == james.hautd or james.direction == james.hautg :
-						dirPer[2] = 1
+#					if james.direction == james.hautd or james.direction == james.hautg :
+#						dirPer[2] = 1
 
 					boule = Projectile(james.x, james.y, bhaut, bdroite, bgauche, dirPer)
 					dirPer = [0,0,0]
