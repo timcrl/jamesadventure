@@ -10,10 +10,10 @@ interface = open('interface.txt', 'r')
 numlvl = interface.read(1)
 if numlvl == '1':
 	level = l1
-	print('level is l1')
+#	print('level is l1')
 if numlvl == '2':
 	level = l2
-	print('level is l2')
+#	print('level is l2')
 
 fenetre = pygame.display.set_mode((level['width'], level['height']), RESIZABLE)
 fond = pygame.image.load(level['background']).convert()
