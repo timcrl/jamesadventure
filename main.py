@@ -6,15 +6,24 @@ from constantes import *
 
 pygame.init()
 
-fenetre = pygame.display.set_mode((largeur_fenetre, hauteur_fenetre), RESIZABLE) 
-fond = pygame.image.load(background).convert()
+interface = open('interface.txt', 'r')
+numlvl = interface.read(1)
+if numlvl == '1':
+	level = l1
+	print('level is l1')
+if numlvl == '2':
+	level = l2
+	print('level is l2')
+
+fenetre = pygame.display.set_mode((level['width'], level['height']), RESIZABLE)
+fond = pygame.image.load(level['background']).convert()
 fenetre.blit(fond, (0,0))
 
-#création du personnage avec ces différentes images : 
+#création du personnage avec ces différentes images :
 #position droite statique, de déplacement 1 et 2 et position gauche statique, de déplacement 1 et 2
 james = Perso(pdroites, pgauches, pdroited1, pdroited2, pgauched1, pgauched2)
 
-plateformes = Plateformes(fenetre, l2)
+plateformes = Plateformes(fenetre, level['file'])
 
 pygame.display.flip()
 
@@ -28,7 +37,7 @@ tir = False
 while continuer:
 	pygame.time.Clock().tick(30)
 	for event in pygame.event.get():
-		
+
 		# pour un évènement de quitte
 		if event.type == QUIT:
 			continuer = 0
@@ -48,12 +57,12 @@ while continuer:
 			elif event.key == K_w:
 				keyState[2] = 1
 			elif event.key == K_DOWN:
-				keyState[3] = 1	
+				keyState[3] = 1
 			elif event.key == K_s:
-				keyState[3] = 1	
-			
+				keyState[3] = 1
+
 			# pour un évènement sur la barre espace : tir
-			elif event.key == K_SPACE : 
+			elif event.key == K_SPACE :
 				if tir == False :
 					if james.direction == james.droites or james.direction == james.droite1 or james.direction == james.droite2 or james.direction == james.hautd:
 						dirPer[0] = 1
@@ -65,7 +74,7 @@ while continuer:
 					boule = Projectile(james.x, james.y, bhaut, bdroite, bgauche, dirPer)
 					dirPer = [0,0,0]
 					tir = boule.shoot
-					
+
 		# pour un évènement de touche relevé
 		elif event.type == KEYUP:
 			if event.key == K_RIGHT :
@@ -81,28 +90,28 @@ while continuer:
 			elif event.key == K_w:
 				keyState[2] = 0
 			elif event.key == K_DOWN:
-				keyState[3] = 0	
+				keyState[3] = 0
 			elif event.key == K_s:
-				keyState[3] = 0	
+				keyState[3] = 0
 
 		# pour un évènement avec souris : déplacement du personnage aux coordonées de la souris (si bug)
 		elif event.type == MOUSEBUTTONDOWN:
 			if event.button == 1:
 				james.x = event.pos[0]
 				james.y = event.pos[1]
-		
+
 	james.deplacer(keyState, plateformes)
 	fenetre.blit(fond, (0,0))
 	fenetre.blit(james.direction, (james.x, james.y))
-	#test de tir pour la boule de feu 
+	#test de tir pour la boule de feu
 	if tir == True:
 		boule.tir(tir)
 		tir = boule.shoot
 		fenetre.blit(boule.direction, (boule.x, boule.y))
 		#si la boule sort de l'écran, on la supprime
-		if tir == False :	
+		if tir == False :
 			del(boule)
-	
+
 	plateformes.afficher(fenetre)
-		
+
 	pygame.display.flip()
