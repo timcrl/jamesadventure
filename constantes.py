@@ -1,5 +1,5 @@
 			#les différentes constantes utilisées
-
+#comment added from Atom
 
 largeur_fenetre = 1080
 hauteur_fenetre = 600
