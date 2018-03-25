@@ -105,7 +105,7 @@ while continuer:
 	fenetre.blit(james.direction, (james.x, james.y))
 	#test de tir pour la boule de feu
 	if tir == True:
-		boule.tir(tir)
+		boule.tir(tir, plateformes, level)
 		tir = boule.shoot
 		fenetre.blit(boule.direction, (boule.x, boule.y))
 		#si la boule sort de l'écran, on la supprime

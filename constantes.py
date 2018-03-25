@@ -1,6 +1,6 @@
 			#les différentes constantes utilisées
 
-largeur_fenetre = 1080
+largeur_fenetre = 1080 #Depreciated, use l1 or l2 varables instead
 hauteur_fenetre = 600
 #1920x1080 lycee, 1366x758 maison, 640x480 pour plateformes
 
@@ -9,6 +9,7 @@ largeur_hero = 25
 v_dplc = 6
 gravity = 15
 taille_plateforme = 40
+vitesse_projectile = 19
 
 			#les différentes images utilisées
 
