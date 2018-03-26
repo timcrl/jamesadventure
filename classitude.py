@@ -1,10 +1,13 @@
+#importation des librairies
 import pygame
 import time
 from pygame.locals import * 
 from constantes import *
  
+# Classe gerant le personnage principal
 class Perso:
 	def __init__(self, droites, gauches, droite1, droite2, gauche1, gauche2):
+		#initialisation des images...
 		self.droites = pygame.image.load(droites).convert_alpha()
 		self.gauches = pygame.image.load(gauches).convert_alpha()
 		self.hautd = pygame.image.load(droite2).convert_alpha()
@@ -14,18 +17,20 @@ class Perso:
 		self.gauche1 = pygame.image.load(gauche1).convert_alpha()
 		self.gauche2 = pygame.image.load(gauche2).convert_alpha()
 		
+		#...puis des coordonnées...
 		self.x = 0
 		self.y = 0
 		self.vitesse_x = 0
 		self.vitesse_y = 0
-
+		
+		#...puis des variables du personnage
 		self.dplc = 0
 		self.direction = self.droites
-#		'''self.niveau = niveau'''
+
 	
 	
 	def deplacer(self, direction, plateforme):		
-		#droite
+		#pour un déplacement à droite
 		if direction[0] == 1:
 			if plateforme.onPlateforme(self.x + largeur_hero + v_dplc, self.y) == False and plateforme.onPlateforme(self.x + largeur_hero + v_dplc, self.y + taille_hero) == False:
 				self.x += v_dplc
@@ -36,7 +41,7 @@ class Perso:
 			elif self.dplc % v_dplc == 4 :
 				self.direction = self.droite2
 
-		#gauche
+		#pour un déplacement à gauche
 		if direction[1] == 1:
 			if self.x > 0 and plateforme.onPlateforme(self.x + v_dplc, self.y) == False and plateforme.onPlateforme(self.x + v_dplc, self.y + taille_hero) == False:
 				self.x -= v_dplc
@@ -47,7 +52,7 @@ class Perso:
 			elif self.dplc % v_dplc == 4 :
 				self.direction = self.gauche2
 
-		#haut
+		#pour un déplacement vers le haut : saut
 		if direction[2] == 1:
 			if self.y == hauteur_fenetre - taille_hero or self.vitesse_y == 0:
 				self.vitesse_y -= gravity
@@ -55,14 +60,14 @@ class Perso:
 				self.direction = self.hautd
 			elif self.direction == self.gauches or self.direction == self.gauche1 or self.direction == self.gauche2 : 
 				self.direction = self.hautg
-		#bas
+				
+		#pour un déplacement vers le bas
 		if direction[3] == 1:
 			self.vitesse_y += 5
-		
 		self.dplc += 1
+		
 		if (direction[0] == 0 and direction[1] == 0) or (direction[1] == 1 and direction[0]== 1) :
 			self.dplc = 0
-	
 		self.vitesse_y += 1
 		
 		if  self.y + self.vitesse_y < hauteur_fenetre - taille_hero and plateforme.onPlateforme(self.x, self.y + self.vitesse_y + taille_hero) == False and plateforme.onPlateforme(self.x + largeur_hero, self.y + self.vitesse_y + taille_hero) == False:
@@ -73,13 +78,15 @@ class Perso:
 			self.vitesse_y = 0
 
 
-
+# Classe gerant les projectiles
 class Projectile:
 	def __init__(self, x, y , haut, droite, gauche, direct):
+		#initialisation des images...
 		self.haut = pygame.image.load(haut).convert_alpha()
 		self.gauche = pygame.image.load(gauche).convert_alpha()
 		self.droite = pygame.image.load(droite).convert_alpha()
-		self.shoot = True
+		
+		#...puis des coordonnées...
 		if direct[0] == 1:
 			self.x = x + largeur_hero
 			self.y = y + 5
@@ -92,23 +99,28 @@ class Projectile:
 			self.x = x + largeur_hero
 			self.y = y -10
 			self.direction = self.haut
-
+			
+		#...puis des variables du projectile
+		self.shoot = True
 
 	def tir(self, tir):
 		self.shoot = tir
-		#droite
+		
+		#pour un tir à droite
 		if self.direction == self.droite:
 			if self.x < largeur_fenetre :
 				self.x += 20
 			else :
 				self.shoot = False
-		#gauche
+				
+		#pour un tir à gauche
 		if self.direction == self.gauche:
 			if self.x > 0:
 				self.x -= 20
 			else :
 				self.shoot = False
-		#haut
+				
+		#pour un tir vers le haut
 		if self.direction == self.haut:
 			if self.y > 0:
 				self.y -= 20
