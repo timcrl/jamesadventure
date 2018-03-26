@@ -116,7 +116,5 @@ while continuer : #tant que continuer vaut 1
 
 	pygame.display.flip() #la fenetre s'actualise
 
-	#c'est quoi ça
-
 	if lancer_le_jeu == True:
 		jouer()
