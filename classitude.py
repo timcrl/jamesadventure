@@ -1,10 +1,17 @@
+#importation des librairies
 import pygame
 import time
 from pygame.locals import *
 from constantes import *
+<<<<<<< HEAD
 
+=======
+ 
+# Classe gerant le personnage principal
+>>>>>>> 9840d8d9dfe60aa86d1a63bf941951109db4a71c
 class Perso:
 	def __init__(self, droites, gauches, droite1, droite2, gauche1, gauche2):
+		#initialisation des images...
 		self.droites = pygame.image.load(droites).convert_alpha()
 		self.gauches = pygame.image.load(gauches).convert_alpha()
 		self.hautd = pygame.image.load(droite2).convert_alpha()
@@ -13,19 +20,33 @@ class Perso:
 		self.droite2 = pygame.image.load(droite2).convert_alpha()
 		self.gauche1 = pygame.image.load(gauche1).convert_alpha()
 		self.gauche2 = pygame.image.load(gauche2).convert_alpha()
+<<<<<<< HEAD
 
+=======
+		
+		#...puis des coordonnées...
+>>>>>>> 9840d8d9dfe60aa86d1a63bf941951109db4a71c
 		self.x = 0
 		self.y = 0
 		self.vitesse_x = 0
 		self.vitesse_y = 0
-
+		
+		#...puis des variables du personnage
 		self.dplc = 0
 		self.direction = self.droites
+<<<<<<< HEAD
 #		'''self.niveau = niveau'''
 
 
 	def deplacer(self, direction, plateforme):
 		#droite
+=======
+
+	
+	
+	def deplacer(self, direction, plateforme):		
+		#pour un déplacement à droite
+>>>>>>> 9840d8d9dfe60aa86d1a63bf941951109db4a71c
 		if direction[0] == 1:
 			if plateforme.onPlateforme(self.x + largeur_hero + v_dplc, self.y) == False and plateforme.onPlateforme(self.x + largeur_hero + v_dplc, self.y + taille_hero) == False:
 				self.x += v_dplc
@@ -36,7 +57,7 @@ class Perso:
 			elif self.dplc % v_dplc == 4 :
 				self.direction = self.droite2
 
-		#gauche
+		#pour un déplacement à gauche
 		if direction[1] == 1:
 			if self.x > 0 and plateforme.onPlateforme(self.x + v_dplc, self.y) == False and plateforme.onPlateforme(self.x + v_dplc, self.y + taille_hero) == False:
 				self.x -= v_dplc
@@ -47,7 +68,7 @@ class Perso:
 			elif self.dplc % v_dplc == 4 :
 				self.direction = self.gauche2
 
-		#haut
+		#pour un déplacement vers le haut : saut
 		if direction[2] == 1:
 			if self.y == hauteur_fenetre - taille_hero or self.vitesse_y == 0:
 				self.vitesse_y -= gravity
@@ -55,14 +76,22 @@ class Perso:
 				self.direction = self.hautd
 			elif self.direction == self.gauches or self.direction == self.gauche1 or self.direction == self.gauche2 :
 				self.direction = self.hautg
-		#bas
+				
+		#pour un déplacement vers le bas
 		if direction[3] == 1:
 			self.vitesse_y += 5
+<<<<<<< HEAD
 
+=======
+>>>>>>> 9840d8d9dfe60aa86d1a63bf941951109db4a71c
 		self.dplc += 1
+		
 		if (direction[0] == 0 and direction[1] == 0) or (direction[1] == 1 and direction[0]== 1) :
 			self.dplc = 0
+<<<<<<< HEAD
 
+=======
+>>>>>>> 9840d8d9dfe60aa86d1a63bf941951109db4a71c
 		self.vitesse_y += 1
 
 		if  self.y + self.vitesse_y < hauteur_fenetre - taille_hero and plateforme.onPlateforme(self.x, self.y + self.vitesse_y + taille_hero) == False and plateforme.onPlateforme(self.x + largeur_hero, self.y + self.vitesse_y + taille_hero) == False:
@@ -73,13 +102,15 @@ class Perso:
 			self.vitesse_y = 0
 
 
-
+# Classe gerant les projectiles
 class Projectile:
 	def __init__(self, x, y , haut, droite, gauche, direct):
+		#initialisation des images...
 		self.haut = pygame.image.load(haut).convert_alpha()
 		self.gauche = pygame.image.load(gauche).convert_alpha()
 		self.droite = pygame.image.load(droite).convert_alpha()
-		self.shoot = True
+		
+		#...puis des coordonnées...
 		if direct[0] == 1:
 			self.x = x + largeur_hero
 			self.y = y + 5
@@ -92,23 +123,28 @@ class Projectile:
 			self.x = x + largeur_hero
 			self.y = y -10
 			self.direction = self.haut
-
+			
+		#...puis des variables du projectile
+		self.shoot = True
 
 	def tir(self, tir, plateforme, level):
 		self.shoot = tir
-		#droite
+		
+		#pour un tir à droite
 		if self.direction == self.droite:
 			if self.x < level['width'] and plateforme.onPlateforme(self.x + vitesse_projectile, self.y) == False:
 				self.x += vitesse_projectile
 			else :
 				self.shoot = False
-		#gauche
+				
+		#pour un tir à gauche
 		if self.direction == self.gauche:
 			if self.x > 0 and plateforme.onPlateforme(self.x - vitesse_projectile, self.y) == False:
 				self.x -= vitesse_projectile
 			else :
 				self.shoot = False
-		#haut
+				
+		#pour un tir vers le haut
 		if self.direction == self.haut:
 			if self.y > 0 and plateforme.onPlateforme(self.x, self.y - vitesse_projectile) == False:
 				self.y -= vitesse_projectile
@@ -116,32 +152,44 @@ class Projectile:
 				self.shoot = False
 
 
+<<<<<<< HEAD
 class Plateformes:
 
+=======
+
+# Classe gerant l'affichage des plateformes			
+class Plateformes:
+	#
+>>>>>>> 9840d8d9dfe60aa86d1a63bf941951109db4a71c
 	def __init__(self,fenetre, level):
 		self.fichier = level
 		#On ouvre le fichier
-		with open(self.fichier, "r") as fichier:
+		with open(self.fichier, "r") as fichier: # on ouvre le fichier de niveau
 			structure_niveau = []
 			#On parcourt les lignes du fichier
 			for ligne in fichier:
 				ligne_niveau = []
-				#On parcourt les sprites (lettres) contenus dans le fichier
+				#On parcourt les blocs (lettres) contenus dans le fichier
 				for block in ligne:
 					#On ignore les "\n" de fin de ligne
 					if block != '\n':
-						#On ajoute le sprite à la liste de la ligne
+						#On ajoute le bloc à la liste de la ligne
 						ligne_niveau.append(block)
 				#On ajoute la ligne à la liste du niveau
 				structure_niveau.append(ligne_niveau)
 			#On sauvegarde cette structure
 			self.structure = structure_niveau
+<<<<<<< HEAD
 
 #			print(str(self.structure))
 
 #			self.afficher()
 
 
+=======
+			
+			
+>>>>>>> 9840d8d9dfe60aa86d1a63bf941951109db4a71c
 	def afficher(self, fenetre):
 		#Chargement des images
 		plateforme = pygame.image.load(image_plateforme).convert()
@@ -156,12 +204,13 @@ class Plateformes:
 				x = num_case * taille_plateforme
 				y = num_ligne * taille_plateforme
 				if sprite == 'm':		   #m = Mur
-					fenetre.blit(plateforme, (x,y))
+					fenetre.blit(plateforme, (x,y)) # On affiche la plateforme sur la fenetre
 				num_case += 1
 			num_ligne += 1
 
 	def onPlateforme(self, x, y):
 		onPlateforme = False
+<<<<<<< HEAD
 
 		blocx = x // taille_plateforme
 		blocy = y // taille_plateforme
@@ -171,6 +220,19 @@ class Plateformes:
 				onPlateforme = True
 
 		if blocx >= len(self.structure[1]) and blocy >= len(self.structure) :
+=======
+		
+		# division entière pour trouver le bloc dans leauel se trouve le point (x; y)
+		blocx = x // taille_plateforme # division entière pour trouver le bloc dans leauel se trouve le point (x; y)
+		blocy = y // taille_plateforme
+		
+		# On regarde si un bloc 'm' de trouve à l'emplacement du bloc qui contient (x; y)
+		if blocx < len(self.structure[1]) and blocy < len(self.structure) : # On évite l'erreur out of range
+			if self.structure[blocy][blocx] == 'm':
+				onPlateforme = True
+			
+		if blocx >= len(self.structure[1]) and blocy >= len(self.structure) : # On considère la sortie de la fenêtre comme un bloc
+>>>>>>> 9840d8d9dfe60aa86d1a63bf941951109db4a71c
 			onPlateforme = True
 
 		return onPlateforme
