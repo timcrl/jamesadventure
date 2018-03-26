@@ -3,7 +3,6 @@ from pygame.locals import * #importer les classes pygame
 pygame.init() #initialisation de la fenetre
 
 def jouer():
-#	os.system("nohup python3 main.py") #commmand for a Linux system only
 	exec(open("./main.py").read())
 
 largeur_fenetre = 640
@@ -116,7 +115,7 @@ while continuer : #tant que continuer vaut 1
 
 
 	pygame.display.flip() #la fenetre s'actualise
-	
+
 	#c'est quoi ça
 
 	if lancer_le_jeu == True:
