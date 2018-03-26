@@ -129,7 +129,7 @@ class Projectile:
 
 
 
-# Classe gerant l'affichage des plateformes
+# Classe gérant l'affichage des plateformes
 class Plateformes:
 	# Initialisation
 	def __init__(self,fenetre, level):
@@ -153,7 +153,7 @@ class Plateformes:
 
 
 	def afficher(self, fenetre):
-		#Chargement des images
+		#Chargement de l'image de la plateforme
 		plateforme = pygame.image.load(image_plateforme).convert()
 
 		#On parcourt la liste du niveau
@@ -174,7 +174,7 @@ class Plateformes:
 		onPlateforme = False
 
 		# division entière pour trouver le bloc dans lequel se trouve le point (x; y)
-		blocx = x // taille_plateforme 
+		blocx = x // taille_plateforme
 		blocy = y // taille_plateforme
 
 		# On regarde si un bloc 'm' de trouve à l'emplacement du bloc qui contient (x; y)
