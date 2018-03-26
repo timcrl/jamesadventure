@@ -71,8 +71,8 @@ while continuer:
 						dirPer[0] = 1
 					if james.direction == james.gauches or james.direction == james.gauche1 or james.direction == james.gauche2 or james.direction == james.hautg:
 						dirPer[1] = 1
-#					if james.direction == james.hautd or james.direction == james.hautg :
-#						dirPer[2] = 1
+					if james.direction == james.hautd or james.direction == james.hautg :
+						dirPer[2] = 1
 
 					boule = Projectile(james.x, james.y, bhaut, bdroite, bgauche, dirPer)
 					dirPer = [0,0,0]
