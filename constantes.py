@@ -1,13 +1,8 @@
 			#les différentes constantes utilisées
 
-<<<<<<< HEAD
-largeur_fenetre = 1080 #Depreciated, use l1 or l2 varables instead
-hauteur_fenetre = 600
-=======
 #  Variables dépréciées
 largeur_fenetre = 1080
-hauteur_fenetre = 600 
->>>>>>> 9840d8d9dfe60aa86d1a63bf941951109db4a71c
+hauteur_fenetre = 600
 #1920x1080 lycee, 1366x758 maison, 640x480 pour plateformes
 
 # Constantes de jeu
