@@ -117,31 +117,27 @@ class Projectile:
 
 
 
-				
+# Classe gerant l'affichage des plateformes			
 class Plateformes:
-	
+	#
 	def __init__(self,fenetre, level):
 		self.fichier = level
 		#On ouvre le fichier
-		with open(self.fichier, "r") as fichier:
+		with open(self.fichier, "r") as fichier: # on ouvre le fichier de niveau
 			structure_niveau = []
 			#On parcourt les lignes du fichier
 			for ligne in fichier:
 				ligne_niveau = []
-				#On parcourt les sprites (lettres) contenus dans le fichier
+				#On parcourt les blocs (lettres) contenus dans le fichier
 				for block in ligne:
 					#On ignore les "\n" de fin de ligne
 					if block != '\n':
-						#On ajoute le sprite à la liste de la ligne
+						#On ajoute le bloc à la liste de la ligne
 						ligne_niveau.append(block)
 				#On ajoute la ligne à la liste du niveau
 				structure_niveau.append(ligne_niveau)
 			#On sauvegarde cette structure
 			self.structure = structure_niveau
-			
-#			print(str(self.structure))
-			
-#			self.afficher()
 			
 			
 	def afficher(self, fenetre):
@@ -158,21 +154,23 @@ class Plateformes:
 				x = num_case * taille_plateforme
 				y = num_ligne * taille_plateforme
 				if sprite == 'm':		   #m = Mur
-					fenetre.blit(plateforme, (x,y))
+					fenetre.blit(plateforme, (x,y)) # On affiche la plateforme sur la fenetre
 				num_case += 1
 			num_ligne += 1
 	
 	def onPlateforme(self, x, y):
 		onPlateforme = False
 		
-		blocx = x // taille_plateforme
+		# division entière pour trouver le bloc dans leauel se trouve le point (x; y)
+		blocx = x // taille_plateforme # division entière pour trouver le bloc dans leauel se trouve le point (x; y)
 		blocy = y // taille_plateforme
 		
-		if blocx < len(self.structure[1]) and blocy < len(self.structure) :
+		# On regarde si un bloc 'm' de trouve à l'emplacement du bloc qui contient (x; y)
+		if blocx < len(self.structure[1]) and blocy < len(self.structure) : # On évite l'erreur out of range
 			if self.structure[blocy][blocx] == 'm':
 				onPlateforme = True
 			
-		if blocx >= len(self.structure[1]) and blocy >= len(self.structure) :
+		if blocx >= len(self.structure[1]) and blocy >= len(self.structure) : # On considère la sortie de la fenêtre comme un bloc
 			onPlateforme = True
 			
 		return onPlateforme
