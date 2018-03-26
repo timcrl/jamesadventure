@@ -131,7 +131,7 @@ class Projectile:
 
 # Classe gerant l'affichage des plateformes
 class Plateformes:
-	#
+	# Initialisation
 	def __init__(self,fenetre, level):
 		self.fichier = level
 		#On ouvre le fichier
@@ -173,8 +173,8 @@ class Plateformes:
 	def onPlateforme(self, x, y):
 		onPlateforme = False
 
-		# division entière pour trouver le bloc dans leauel se trouve le point (x; y)
-		blocx = x // taille_plateforme # division entière pour trouver le bloc dans leauel se trouve le point (x; y)
+		# division entière pour trouver le bloc dans lequel se trouve le point (x; y)
+		blocx = x // taille_plateforme 
 		blocy = y // taille_plateforme
 
 		# On regarde si un bloc 'm' de trouve à l'emplacement du bloc qui contient (x; y)
@@ -182,7 +182,8 @@ class Plateformes:
 			if self.structure[blocy][blocx] == 'm':
 				onPlateforme = True
 
-		if blocx >= len(self.structure[1]) and blocy >= len(self.structure) : # On considère la sortie de la fenêtre comme un bloc
+        # On considère la sortie de la fenêtre comme un bloc
+		if blocx >= len(self.structure[1]) and blocy >= len(self.structure) :
 			onPlateforme = True
 
 		return onPlateforme

@@ -5,9 +5,9 @@ from pygame.locals import *
 from classitude import *
 from constantes import *
 
-pygame.init()
+pygame.init() # Initialisation de pygame
 
-# création de la fenetre en fonction du niveau selectionné dans le menu (à venir)
+# Lecture du niveau séléctionné dans interface.txt
 interface = open('interface.txt', 'r')
 numlvl = interface.read(1)
 if numlvl == '1':
@@ -18,16 +18,16 @@ if numlvl == '2':
 # création de la fenetre et du fond de la fenetre
 fenetre = pygame.display.set_mode((level['width'], level['height']), RESIZABLE)
 fond = pygame.image.load(level['background']).convert()
-fenetre.blit(fond, (0,0))
+fenetre.blit(fond, (0,0)) # On place le fond sur la fenêtre
 
 # création du personnage avec ces différentes images :
-	#position droite statique, de déplacement 1 et 2 et position gauche statique, de déplacement 1 et 2
+#position droite statique, de déplacement 1 et 2 et position gauche statique, de déplacement 1 et 2
 james = Perso(pdroites, pgauches, pdroited1, pdroited2, pgauched1, pgauched2)
 
 #création des plateformes
 plateformes = Plateformes(fenetre, level['file'])
 
-pygame.display.flip()
+pygame.display.flip() # Raffraichissement de l'affichage après l'init
 
 #initialisation des variables
 continuer = 1
@@ -37,7 +37,7 @@ tir = False
 
 while continuer:
 	pygame.time.Clock().tick(30)
-	
+
 	#test pygame pour...
 	for event in pygame.event.get():
 
@@ -105,11 +105,11 @@ while continuer:
 
 	#modifications des variables pour James avec la fonction déplacer
 	james.deplacer(keyState, plateformes)
-	
+
 	#actualisation des variables de la fenetre puis du personnage
 	fenetre.blit(fond, (0,0))
 	fenetre.blit(james.direction, (james.x, james.y))
-	
+
 	#test de tir pour la boule de feu
 	if tir == True:
 		boule.tir(tir, plateformes, level)
