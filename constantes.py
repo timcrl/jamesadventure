@@ -1,6 +1,6 @@
-			#les différentes constantes utilisées
+			#les differentes constantes utilisees
 
-#  Variables dépréciées
+#  Variables depreciees
 largeur_fenetre = 1080
 hauteur_fenetre = 600
 #1920x1080 lycee, 1366x758 maison, 640x480 pour plateformes
@@ -8,12 +8,12 @@ hauteur_fenetre = 600
 # Constantes de jeu
 taille_hero = 31
 largeur_hero = 25
-v_dplc = 6 # vitesse de déplacement du personnage
+v_dplc = 6 # vitesse de deplacement du personnage
 gravity = 15
 taille_plateforme = 40
 vitesse_projectile = 19
 
-			#les différentes images utilisées
+			#les differentes images utilisees
 # Images james
 pgauches = "data/images/jamesstatiquegauche.png" # Static
 pgauched1 = "data/images/jamesdeplacementgauche1.png" # Mouvement
@@ -30,6 +30,7 @@ bhaut = "data/images/tirhaut.png"
 
 background = "data/images/background_futur.jpg" # Image de fond
 image_plateforme = "data/images/plateforme2.png" # Images d'une plateforme
+image_portal = "data/images/portal1.png"
 
 
 # Dictionnaires stockant toutes les information des niveaux
