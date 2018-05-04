@@ -1,4 +1,6 @@
-#importation des librairies
+# Fichier contenant les classes du jeu
+
+# importation des librairies
 import pygame
 import time
 from pygame.locals import *
