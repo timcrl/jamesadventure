@@ -14,6 +14,8 @@ if numlvl == '1':
 	level = l1
 if numlvl == '2':
 	level = l2
+if numlvl == '3':
+	level = l3
 
 # création de la fenetre et du fond de la fenetre
 fenetre = pygame.display.set_mode((level['width'], level['height']), RESIZABLE)
