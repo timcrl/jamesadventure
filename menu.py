@@ -5,38 +5,54 @@ pygame.init() #initialisation de la fenetre
 def jouer():
 	exec(open("./main.py").read())
 
+
+# Lecture du fichier interface
+
+with open("interface.txt") as f:
+    content = f.readlines()
+# Supression des '\n' a la fin des lignes
+# for x in content parcours content. La boucle dans les crochets rends le code plus compact.
+# x.strip() retourne une copie de x sans les espaces ou les retours a la ligne
+content = [x.strip() for x in content]
+interface = {'niveau':content[0], 'dernier_niveau':content[1], 'dernier_score':content[2], 'meilleur_score':content[3], 'musique':content[4], 'son':content[5]}
+
+print(str(interface))
+
+# Dimessions de la fenetre du menu
 largeur_fenetre = 640
 hauteur_fenetre = 480
 
-fenetre = pygame.display.set_mode((largeur_fenetre, hauteur_fenetre), RESIZABLE) #la variable fenetre prend la fonction fenetre avec succession d'images supperposables
-fond = pygame.image.load("data/menu/background640x480.jpg").convert() #fond prend la fonction image pygame importer
+# la variable fenetre prend la fonction fenetre avec succession d'images supperposables
+fenetre = pygame.display.set_mode((largeur_fenetre, hauteur_fenetre), RESIZABLE)
+# fond prend la fonction image pygame importer
+fond = pygame.image.load("data/menu/background640x480.jpg").convert()
 
-#chargement et collage des boutons
-#l signifie que c'est le bouton effet levé
-#e signifie que c'est le bouton effet enfoncé
+# chargement et collage des boutons
+# l signifie que c'est le bouton effet levé
+# e signifie que c'est le bouton effet enfoncé
 
-#jouer
+# jouer
 jouerl = pygame.image.load("data/menu/jouer levé.png").convert()
 jouere = pygame.image.load("data/menu/jouer enfoncé.png").convert()
 
-#personnages
+# personnages
 personnagesl = pygame.image.load("data/menu/personnages levé.png").convert()
 personnagese = pygame.image.load("data/menu/personnages enfoncé.png").convert()
 
-#niveaux
+# niveaux
 niveauxl = pygame.image.load("data/menu/niveaux levé.png").convert()
 niveauxe = pygame.image.load("data/menu/niveaux enfoncé.png").convert()
 
-#démo
+# démo
 demol = pygame.image.load("data/menu/démo levé.png").convert()
 demoe = pygame.image.load("data/menu/démo enfoncé.png").convert()
 
-#paramètres
+# paramètres
 parametresl = pygame.image.load("data/menu/paramètres levé.png").convert()
 parametrese = pygame.image.load("data/menu/paramètres enfoncé.png").convert()
 
 
-#Variables stockant l'etat des boutons
+# Variables stockant l'etat des boutons
 buttonj = 0
 buttonpa = 0
 buttonpe = 0
@@ -47,9 +63,9 @@ lancer_le_jeu = False
 
 continuer = 1
 
-while continuer : #tant que continuer vaut 1
-	for event in pygame.event.get() : #pour les evenements pygames
-		if event.type == QUIT : #s'il y a une action quitter continuer vaut 0 fin de boucle
+while continuer : # tant que continuer vaut 1
+	for event in pygame.event.get() : # pour les evenements pygames
+		if event.type == QUIT : # s'il y a une action quitter continuer vaut 0 fin de boucle
 			continuer = 0
 		if event.type == MOUSEBUTTONUP and event.button == 1 and event.pos[1] > 100 and event.pos[1] < hauteur_fenetre-315 and event.pos[0] > 220 and event.pos[0] < largeur_fenetre-220 :
 			print("Jouer")
@@ -114,7 +130,7 @@ while continuer : #tant que continuer vaut 1
 		fenetre.blit(parametresl, (450, 265))
 
 
-	pygame.display.flip() #la fenetre s'actualise
+	pygame.display.flip() # la fenetre s'actualise
 
 	if lancer_le_jeu == True:
 		jouer()
