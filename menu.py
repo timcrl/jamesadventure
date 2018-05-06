@@ -1,4 +1,6 @@
-﻿import pygame, time, os #importer toute la lib de pygame et time
+﻿#menu du jeu
+
+import pygame, time, os #importer toute la lib de pygame et time
 from pygame.locals import * #importer les classes pygame
 from constantes import * #importer les constantes (ici pour la musique)
 pygame.init() #initialisation de la fenetre

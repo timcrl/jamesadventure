@@ -132,3 +132,5 @@ while continuer:
 	#rafraichissement de l'application
 	pygame.display.flip()
 
+#lancement du menu du demmarage après avoir quitter le jeu
+exec(open("./menu.py").read())
