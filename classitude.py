@@ -168,7 +168,7 @@ class Plateformes:
 				#On calcule la position reelle en pixels
 				x = num_case * taille_plateforme
 				y = num_ligne * taille_plateforme
-				if sprite == 'm':		   #m = Mur
+				if sprite == 'm' or sprite == 't':		   #m = Mur
 					fenetre.blit(plateforme, (x,y)) # On affiche la plateforme sur la fenetre
 				elif sprite == 'p':
 					fenetre.blit(portal, (x,y)) # On affiche le portail sur la fenetre
@@ -184,7 +184,7 @@ class Plateformes:
 
 		# On regarde si un bloc 'm' de trouve a l'emplacement du bloc qui contient (x; y)
 		if blocx < len(self.structure[1]) and blocy < len(self.structure) : # On evite l'erreur out of range
-			if self.structure[blocy][blocx] == 'm':
+			if self.structure[blocy][blocx] == 'm' or self.structure[blocy][blocx] == 'i':
 				onPlateforme = True
 
         # On considere la sortie de la fenetre comme un bloc
