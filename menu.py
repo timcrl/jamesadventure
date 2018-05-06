@@ -1,5 +1,3 @@
-﻿#menu du jeu
-
 import pygame, time, os #importer toute la lib de pygame et time
 from pygame.locals import * #importer les classes pygame
 from constantes import * #importer les constantes (ici pour la musique)
@@ -7,7 +5,7 @@ pygame.init() #initialisation de la fenetre
 
 
 def jouer():
-	exec(open("./main.py").read())
+	exec(open("main.py").read())
 
 
 # Lecture du fichier interface
