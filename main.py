@@ -51,6 +51,7 @@ while continuer:
 		# ...pour un évènement de quitte
 		if event.type == QUIT:
 			continuer = 0
+			pygame.mixer.music.stop()
 
 		# ...pour un évènement de touche enfoncée
 		elif event.type == KEYDOWN:

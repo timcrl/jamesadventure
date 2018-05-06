@@ -73,6 +73,8 @@ while continuer : # tant que continuer vaut 1
 	for event in pygame.event.get() : # pour les evenements pygames
 		if event.type == QUIT : # s'il y a une action quitter continuer vaut 0 fin de boucle
 			continuer = 0
+			pygame.mixer.music.stop()
+			
 		if event.type == MOUSEBUTTONUP and event.button == 1 and event.pos[1] > 100 and event.pos[1] < hauteur_fenetre-315 and event.pos[0] > 220 and event.pos[0] < largeur_fenetre-220 :
 			print("Jouer")
 			lancer_le_jeu = True
