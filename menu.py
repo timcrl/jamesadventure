@@ -34,24 +34,24 @@ fond = pygame.image.load("data/menu/background640x480.jpg").convert()
 # e signifie que c'est le bouton effet enfoncé
 
 # jouer
-jouerl = pygame.image.load("data/menu/jouer levé.png").convert()
-jouere = pygame.image.load("data/menu/jouer enfoncé.png").convert()
+jouerl = pygame.image.load("data/menu/jouer leve.png").convert()
+jouere = pygame.image.load("data/menu/jouer enfonce.png").convert()
 
 # personnages
-personnagesl = pygame.image.load("data/menu/personnages levé.png").convert()
-personnagese = pygame.image.load("data/menu/personnages enfoncé.png").convert()
+personnagesl = pygame.image.load("data/menu/personnages leve.png").convert()
+personnagese = pygame.image.load("data/menu/personnages enfonce.png").convert()
 
 # niveaux
-niveauxl = pygame.image.load("data/menu/niveaux levé.png").convert()
-niveauxe = pygame.image.load("data/menu/niveaux enfoncé.png").convert()
+niveauxl = pygame.image.load("data/menu/niveaux leve.png").convert()
+niveauxe = pygame.image.load("data/menu/niveaux enfonce.png").convert()
 
 # démo
-demol = pygame.image.load("data/menu/démo levé.png").convert()
-demoe = pygame.image.load("data/menu/démo enfoncé.png").convert()
+demol = pygame.image.load("data/menu/demo leve.png").convert()
+demoe = pygame.image.load("data/menu/demo enfonce.png").convert()
 
 # paramètres
-parametresl = pygame.image.load("data/menu/paramètres levé.png").convert()
-parametrese = pygame.image.load("data/menu/paramètres enfoncé.png").convert()
+parametresl = pygame.image.load("data/menu/parametres leve.png").convert()
+parametrese = pygame.image.load("data/menu/parametres enfonce.png").convert()
 
 
 # Variables stockant l'etat des boutons
