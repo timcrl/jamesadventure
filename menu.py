@@ -30,8 +30,8 @@ fenetre = pygame.display.set_mode((largeur_fenetre, hauteur_fenetre), RESIZABLE)
 fond = pygame.image.load("data/menu/background640x480.jpg").convert()
 
 # chargement et collage des boutons
-# l signifie que c'est le bouton effet levé
-# e signifie que c'est le bouton effet enfoncé
+# l signifie que c'est le bouton effet leve
+# e signifie que c'est le bouton effet enfonce
 
 # jouer
 jouerl = pygame.image.load("data/menu/jouer leve.png").convert()
@@ -45,11 +45,11 @@ personnagese = pygame.image.load("data/menu/personnages enfonce.png").convert()
 niveauxl = pygame.image.load("data/menu/niveaux leve.png").convert()
 niveauxe = pygame.image.load("data/menu/niveaux enfonce.png").convert()
 
-# démo
+# demo
 demol = pygame.image.load("data/menu/demo leve.png").convert()
 demoe = pygame.image.load("data/menu/demo enfonce.png").convert()
 
-# paramètres
+# parametres
 parametresl = pygame.image.load("data/menu/parametres leve.png").convert()
 parametrese = pygame.image.load("data/menu/parametres enfonce.png").convert()
 
@@ -85,10 +85,10 @@ while continuer : # tant que continuer vaut 1
 			print("Niveaux")
 			buttonn = 0
 		if event.type == MOUSEBUTTONUP and event.button == 1 and event.pos[1] > 325 and event.pos[1] < hauteur_fenetre-125 and event.pos[0] > 100 and event.pos[0] < largeur_fenetre-390 :
-			print("Démo")
+			print("Demo")
 			buttond = 0
 		if event.type == MOUSEBUTTONUP and event.button == 1 and event.pos[1] > 265 and event.pos[1] < hauteur_fenetre-185 and event.pos[0] > 450 and event.pos[0] < largeur_fenetre-40 :
-			print("Paramètres")
+			print("Parametres")
 			buttonpa = 0
 
 
@@ -105,7 +105,7 @@ while continuer : # tant que continuer vaut 1
 			print("Démo")
 			buttond = 1
 		if event.type == MOUSEBUTTONDOWN and event.button == 1 and event.pos[1] > 265 and event.pos[1] < hauteur_fenetre-185 and event.pos[0] > 450 and event.pos[0] < largeur_fenetre-40 :
-			print("Paramètres")
+			print("Parametres")
 			buttonpa = 1
 
 
