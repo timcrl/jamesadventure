@@ -1,4 +1,4 @@
-#importation des librairies
+#import des librairies
 import pygame
 import time
 from pygame.locals import *
@@ -43,7 +43,7 @@ pygame.mixer.music.play(-1)
 
 while continuer:
 	pygame.time.Clock().tick(30)
-	
+
 
 	#test pygame pour...
 	for event in pygame.event.get():
@@ -133,4 +133,4 @@ while continuer:
 	pygame.display.flip()
 
 #lancement du menu du demmarage après avoir quitter le jeu
-exec(open("./menu.py").read())
+exec(open("menu.py").read())
