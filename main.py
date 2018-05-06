@@ -37,8 +37,13 @@ keyState = [0, 0, 0, 0] # état du personnage lors de l'appuie d'une touche, res
 dirPer = [0,0,0] # direction du personnage, pour avoir la direction de la boule : droite, gauche, haut
 tir = False
 
+#musique :
+pygame.mixer.music.load(musicprinc)
+pygame.mixer.music.play(-1)
+
 while continuer:
 	pygame.time.Clock().tick(30)
+	
 
 	#test pygame pour...
 	for event in pygame.event.get():
@@ -126,3 +131,4 @@ while continuer:
 
 	#rafraichissement de l'application
 	pygame.display.flip()
+

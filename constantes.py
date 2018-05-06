@@ -36,4 +36,9 @@ image_portal = "data/images/portal1.png"
 # Dictionnaires stockant toutes les information des niveaux
 l1 = {'file':'data/levels/l1.txt', 'background':'data/images/background640x480.jpg', 'width':640, 'height':480, 'platform':'data/images/plateforme2.png'}
 l2 = {'file':'data/levels/l2.txt', 'background':'data/images/background_futur.jpg', 'width':1080, 'height':600, 'platform':'data/images/plateforme2.png'}
-l3 = {'file':'data/levels/l3.txt', 'background':'data/images/background640x480.jpg', 'width':640, 'height':480, 'platform':'data/images/plateforme2.png'}
+l3 = {'file':'data/levels/l3.txt', 'background':'data/images/background640x480.jpg', 'width':640, 'height':480, 'platform':'data/images/plateforme2.png'} 
+
+
+#Musiques et sons
+musicprinc = "data/sounds/MainMusicAll.wav"
+musicmenu = "data/sounds/MainMusicAcc.wav"

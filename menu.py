@@ -1,6 +1,8 @@
 ﻿import pygame, time, os #importer toute la lib de pygame et time
 from pygame.locals import * #importer les classes pygame
+from constantes import * #importer les constantes (ici pour la musique)
 pygame.init() #initialisation de la fenetre
+
 
 def jouer():
 	exec(open("./main.py").read())
@@ -62,6 +64,10 @@ buttonn = 0
 lancer_le_jeu = False
 
 continuer = 1
+
+#musique :
+pygame.mixer.music.load(musicmenu)
+pygame.mixer.music.play(-1)
 
 while continuer : # tant que continuer vaut 1
 	for event in pygame.event.get() : # pour les evenements pygames
