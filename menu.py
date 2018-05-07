@@ -74,7 +74,7 @@ while continuer : # tant que continuer vaut 1
 		if event.type == QUIT : # s'il y a une action quitter continuer vaut 0 fin de boucle
 			continuer = 0
 			pygame.mixer.music.stop()
-			
+
 		if event.type == MOUSEBUTTONUP and event.button == 1 and event.pos[1] > 100 and event.pos[1] < hauteur_fenetre-315 and event.pos[0] > 220 and event.pos[0] < largeur_fenetre-220 :
 			print("Jouer")
 			lancer_le_jeu = True
@@ -104,7 +104,7 @@ while continuer : # tant que continuer vaut 1
 			print("Niveaux")
 			buttonn = 1
 		if event.type == MOUSEBUTTONDOWN and event.button == 1 and event.pos[1] > 325 and event.pos[1] < hauteur_fenetre-125 and event.pos[0] > 100 and event.pos[0] < largeur_fenetre-390 :
-			print("Démo")
+			print("Demo")
 			buttond = 1
 		if event.type == MOUSEBUTTONDOWN and event.button == 1 and event.pos[1] > 265 and event.pos[1] < hauteur_fenetre-185 and event.pos[0] > 450 and event.pos[0] < largeur_fenetre-40 :
 			print("Parametres")
