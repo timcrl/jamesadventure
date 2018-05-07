@@ -40,6 +40,11 @@ tir = False
 #musique :
 pygame.mixer.music.load(musicprinc)
 pygame.mixer.music.play(-1)
+pygame.mixer.music.set_volume(0.75)
+
+#son
+sonsaut = pygame.mixer.Sound(Ssaut)
+sontir = pygame.mixer.Sound(Stir)
 
 while continuer:
 	pygame.time.Clock().tick(30)
@@ -64,8 +69,10 @@ while continuer:
 			elif event.key == K_a:
 				keyState[1] = 1
 			elif event.key == K_UP:
+				sonsaut.play()
 				keyState[2] = 1
 			elif event.key == K_w:
+				sonsaut.play()
 				keyState[2] = 1
 			elif event.key == K_DOWN:
 				keyState[3] = 1
@@ -75,6 +82,7 @@ while continuer:
 			# ...pour un évènement sur la barre espace : tir
 			elif event.key == K_SPACE :
 				if tir == False :
+					sontir.play()
 					if james.direction == james.droites or james.direction == james.droite1 or james.direction == james.droite2 or james.direction == james.hautd:
 						dirPer[0] = 1
 					if james.direction == james.gauches or james.direction == james.gauche1 or james.direction == james.gauche2 or james.direction == james.hautg:

@@ -42,3 +42,10 @@ l3 = {'file':'data/levels/l3.txt', 'background':'data/images/background640x480.j
 #Musiques et sons
 musicprinc = "data/sounds/MainMusicAll.wav"
 musicmenu = "data/sounds/MainMusicAcc.wav"
+
+Stouchedown = "data/sounds/touchedown.wav"
+Stoucheup = "data/sounds/toucheup.wav"
+
+Ssaut = "data/sounds/saut.wav"
+
+Stir = "data/sounds/tir.wav"

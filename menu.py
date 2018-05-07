@@ -67,7 +67,12 @@ continuer = 1
 
 #musique :
 pygame.mixer.music.load(musicmenu)
+pygame.mixer.music.set_volume(0.075)
 pygame.mixer.music.play(-1)
+
+#son
+touchesounddown = pygame.mixer.Sound(Stouchedown)
+touchesoundup = pygame.mixer.Sound(Stoucheup)
 
 while continuer : # tant que continuer vaut 1
 	for event in pygame.event.get() : # pour les evenements pygames
@@ -76,37 +81,49 @@ while continuer : # tant que continuer vaut 1
 			pygame.mixer.music.stop()
 			
 		if event.type == MOUSEBUTTONUP and event.button == 1 and event.pos[1] > 100 and event.pos[1] < hauteur_fenetre-315 and event.pos[0] > 220 and event.pos[0] < largeur_fenetre-220 :
+			touchesounddown.play()
 			print("Jouer")
 			lancer_le_jeu = True
 			continuer = 0
 			buttonj = 0
+
 		if event.type == MOUSEBUTTONUP and event.button == 1 and event.pos[1] > 175 and event.pos[1] < hauteur_fenetre-280 and event.pos[0] > 100 and event.pos[0] < largeur_fenetre-390 :
+			touchesounddown.play()
 			print("Personnages")
 			buttonpe = 0
 		if event.type == MOUSEBUTTONUP and event.button == 1 and event.pos[1] > 250 and event.pos[1] < hauteur_fenetre-200 and event.pos[0] > 100 and event.pos[0] < largeur_fenetre-390 :
+			touchesounddown.play()
 			print("Niveaux")
 			buttonn = 0
 		if event.type == MOUSEBUTTONUP and event.button == 1 and event.pos[1] > 325 and event.pos[1] < hauteur_fenetre-125 and event.pos[0] > 100 and event.pos[0] < largeur_fenetre-390 :
+			touchesounddown.play()
 			print("Demo")
 			buttond = 0
+			touchesounddown.play()
 		if event.type == MOUSEBUTTONUP and event.button == 1 and event.pos[1] > 265 and event.pos[1] < hauteur_fenetre-185 and event.pos[0] > 450 and event.pos[0] < largeur_fenetre-40 :
+			touchesounddown.play()
 			print("Parametres")
 			buttonpa = 0
 
 
 		if event.type == MOUSEBUTTONDOWN and event.button == 1 and event.pos[1] > 100 and event.pos[1] < hauteur_fenetre-315 and event.pos[0] > 220 and event.pos[0] < largeur_fenetre-220 :
+			touchesoundup.play()
 			print("Jouer")
 			buttonj = 1
 		if event.type == MOUSEBUTTONDOWN and event.button == 1 and event.pos[1] > 175 and event.pos[1] < hauteur_fenetre-280 and event.pos[0] > 100 and event.pos[0] < largeur_fenetre-390 :
+			touchesoundup.play()
 			print("Personnages")
 			buttonpe = 1
 		if event.type == MOUSEBUTTONDOWN and event.button == 1 and event.pos[1] > 250 and event.pos[1] < hauteur_fenetre-200 and event.pos[0] > 100 and event.pos[0] < largeur_fenetre-390 :
+			touchesoundup.play()
 			print("Niveaux")
 			buttonn = 1
 		if event.type == MOUSEBUTTONDOWN and event.button == 1 and event.pos[1] > 325 and event.pos[1] < hauteur_fenetre-125 and event.pos[0] > 100 and event.pos[0] < largeur_fenetre-390 :
+			touchesoundup.play()
 			print("Démo")
 			buttond = 1
 		if event.type == MOUSEBUTTONDOWN and event.button == 1 and event.pos[1] > 265 and event.pos[1] < hauteur_fenetre-185 and event.pos[0] > 450 and event.pos[0] < largeur_fenetre-40 :
+			touchesoundup.play()
 			print("Parametres")
 			buttonpa = 1
 
