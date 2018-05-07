@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 #import des librairies
 import pygame
 import time
@@ -43,6 +46,8 @@ pygame.mixer.music.play(-1)
 
 while continuer:
 	pygame.time.Clock().tick(30)
+
+	keyState[2] = 0 # Securite double jump
 
 
 	#test pygame pour...

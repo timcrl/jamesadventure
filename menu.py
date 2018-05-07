@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 import pygame, time, os #importer toute la lib de pygame et time
 from pygame.locals import * #importer les classes pygame
 from constantes import * #importer les constantes (ici pour la musique)

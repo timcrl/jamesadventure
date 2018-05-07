@@ -34,7 +34,7 @@ class Perso:
 	def deplacer(self, direction, plateforme):
 		#pour un deplacement a droite
 		if direction[0] == 1:
-			if plateforme.onPlateforme(self.x + largeur_hero + v_dplc, self.y) == False and plateforme.onPlateforme(self.x + largeur_hero + v_dplc, self.y + taille_hero) == False:
+			if plateforme.onPlateforme(self.x + largeur_hero + 1, self.y) == False and plateforme.onPlateforme(self.x + largeur_hero + 1, self.y + taille_hero) == False:
 				self.x += v_dplc
 			if self.dplc % v_dplc == 0 :
 				self.direction = self.droites
@@ -45,7 +45,7 @@ class Perso:
 
 		#pour un deplacement a gauche
 		if direction[1] == 1:
-			if self.x > 0 and plateforme.onPlateforme(self.x + v_dplc, self.y) == False and plateforme.onPlateforme(self.x + v_dplc, self.y + taille_hero) == False:
+			if self.x > 0 and plateforme.onPlateforme(self.x - 1, self.y) == False and plateforme.onPlateforme(self.x - 1, self.y + taille_hero) == False:
 				self.x -= v_dplc
 			if self.dplc % v_dplc == 0 :
 				self.direction = self.gauches
