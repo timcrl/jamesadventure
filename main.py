@@ -127,6 +127,7 @@ while continuer:
 
 	#modifications des variables pour James avec la fonction déplacer
 	james.deplacer(keyState, plateformes)
+	james.interactions(plateformes)
 
 	#actualisation des variables de la fenetre puis du personnage
 	fenetre.blit(fond, (0,0))
@@ -148,5 +149,5 @@ while continuer:
 	pygame.display.flip()
 	time.sleep(0.003)
 
-#lancement du menu du demmarage après avoir quitter le jeu
+#lancement du menu du demmarage après avoir quitte le jeu
 exec(open("menu.py").read())

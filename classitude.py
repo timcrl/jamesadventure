@@ -31,6 +31,7 @@ class Perso:
 		#...puis des variables du personnage
 		self.dplc = 0
 		self.direction = self.droites
+		self.starsCollected = 0
 
 
 
@@ -81,6 +82,25 @@ class Perso:
 		else:
 #			self.y = hauteur_fenetre - taille_hero
 			self.vitesse_y = 0
+
+	def interactions(self, plateforme):
+		if plateforme.onStar(self.x, self.y) == True:
+			plateforme.removeStar(self.x, self.y)
+			self.starsCollected += 1
+			print('You collected a star')
+		if plateforme.onStar(self.x + largeur_hero, self.y) == True:
+			plateforme.removeStar(self.x + largeur_hero, self.y)
+			self.starsCollected += 1
+			print('You collected a star')
+		if plateforme.onStar(self.x, self.y + taille_hero) == True:
+			plateforme.removeStar(self.x, self.y + taille_hero)
+			self.starsCollected += 1
+			print('You collected a star')
+		if plateforme.onStar(self.x + largeur_hero, self.y + taille_hero) == True:
+			plateforme.removeStar(self.x + largeur_hero, self.y + taille_hero)
+			self.starsCollected += 1
+			print('You collected a star')
+
 
 
 # Classe gerant les projectiles
@@ -201,3 +221,57 @@ class Plateformes:
 			onPlateforme = True
 
 		return onPlateforme
+
+	def onStar(self, x, y):
+		onStar = False
+
+		# division entiere pour trouver le bloc dans lequel se trouve le point (x; y)
+		blocx = x // taille_plateforme
+		blocy = y // taille_plateforme
+
+		# On regarde si un bloc 'm' de trouve a l'emplacement du bloc qui contient (x; y)
+		if blocx < len(self.structure[1]) and blocy < len(self.structure) : # On evite l'erreur out of range
+			if self.structure[blocy][blocx] == 's':
+				onStar = True
+
+		return onStar
+
+	def onPortal(self, x, y):
+		onPortal = False
+
+		# division entiere pour trouver le bloc dans lequel se trouve le point (x; y)
+		blocx = x // taille_plateforme
+		blocy = y // taille_plateforme
+
+		# On regarde si un bloc 'm' de trouve a l'emplacement du bloc qui contient (x; y)
+		if blocx < len(self.structure[1]) and blocy < len(self.structure) : # On evite l'erreur out of range
+			if self.structure[blocy][blocx] == 'p':
+				onPortal = True
+
+		return onPortal
+
+	def onSpines(self, x, y):
+		onSpines = False
+
+		# division entiere pour trouver le bloc dans lequel se trouve le point (x; y)
+		blocx = x // taille_plateforme
+		blocy = y // taille_plateforme
+
+		# On regarde si un bloc 'm' de trouve a l'emplacement du bloc qui contient (x; y)
+		if blocx < len(self.structure[1]) and blocy < len(self.structure) : # On evite l'erreur out of range
+			if self.structure[blocy][blocx] == 'e':
+				onSpines = True
+
+		return onSpines
+
+	def removeStar(self, x, y):
+
+		# division entiere pour trouver le bloc dans lequel se trouve le point (x; y)
+		blocx = x // taille_plateforme
+		blocy = y // taille_plateforme
+
+		self.structure[blocy][blocx] = '0'
+		if self.structure[blocy][blocx] == '0':
+			print('structure sucessfully updated')
+		else:
+			print('something went wrong')
