@@ -70,7 +70,7 @@ continuer = 1
 
 #musique :
 pygame.mixer.music.load(musicmenu)
-pygame.mixer.music.set_volume(0.075)
+pygame.mixer.music.set_volume(0.25)
 pygame.mixer.music.play(-1)
 
 #son

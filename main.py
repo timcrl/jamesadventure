@@ -41,6 +41,7 @@ dirPer = [0,0,0] # direction du personnage, pour avoir la direction de la boule 
 tir = False
 
 #musique :
+
 pygame.mixer.music.load(musicprinc)
 pygame.mixer.music.play(-1)
 pygame.mixer.music.set_volume(0.75)

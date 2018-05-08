@@ -34,7 +34,8 @@ bhaut = "data/images/tirhaut.png"
 background = "data/images/background_futur.jpg" # Image de fond
 image_plateforme = "data/images/plateforme2.png" # Images d'une plateforme
 image_portal = "data/images/portal1.png"
-image_epines = "data/images/epines.png"
+image_epines = "data/images/epines2.png"
+image_etoile = "data/images/star.png"
 
 
 # Dictionnaires stockant toutes les information des niveaux
