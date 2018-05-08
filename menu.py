@@ -23,8 +23,6 @@ with open("interface.txt") as f:
 content = [x.strip() for x in content]
 interface = {'niveau':content[0], 'dernier_niveau':content[1], 'dernier_score':content[2], 'meilleur_score':content[3], 'musique':content[4], 'son':content[5]}
 
-print(str(interface))
-
 # Dimessions de la fenetre du menu
 largeur_fenetre = 640
 hauteur_fenetre = 480
