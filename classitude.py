@@ -32,8 +32,7 @@ class Perso:
 		self.dplc = 0
 		self.direction = self.droites
 		self.starsCollected = 0
-
-
+		self.portailAtteint = False
 
 	def deplacer(self, direction, plateforme):
 		#pour un deplacement a droite
@@ -84,24 +83,27 @@ class Perso:
 			self.vitesse_y = 0
 
 	def interactions(self, plateforme):
+		finDuJeu = False
+		#On regarde si le joueur est sur une etoile
 		if plateforme.onStar(self.x, self.y) == True:
-			plateforme.removeStar(self.x, self.y)
-			self.starsCollected += 1
-			print('You collected a star')
+			plateforme.removeStar(self.x, self.y)# Si oui on retire l'etoile
+			self.starsCollected += 1 # Et on l'ajoute dans l'inventaire du personnage
+		# Idem, chaque "coin" du personnage est verifie
 		if plateforme.onStar(self.x + largeur_hero, self.y) == True:
 			plateforme.removeStar(self.x + largeur_hero, self.y)
 			self.starsCollected += 1
-			print('You collected a star')
 		if plateforme.onStar(self.x, self.y + taille_hero) == True:
 			plateforme.removeStar(self.x, self.y + taille_hero)
 			self.starsCollected += 1
-			print('You collected a star')
 		if plateforme.onStar(self.x + largeur_hero, self.y + taille_hero) == True:
 			plateforme.removeStar(self.x + largeur_hero, self.y + taille_hero)
 			self.starsCollected += 1
-			print('You collected a star')
 
+		if plateforme.onPortal(self.x + largeur_hero, self.y + taille_hero) == True or plateforme.onPortal(self.x + largeur_hero, self.y) == True or plateforme.onPortal(self.x, self.y + taille_hero) == True or plateforme.onPortal(self.x, self.y) == True:
+			self.portailAtteint = True
+			finDuJeu = True
 
+		return finDuJeu
 
 # Classe gerant les projectiles
 class Projectile:
@@ -271,7 +273,3 @@ class Plateformes:
 		blocy = y // taille_plateforme
 
 		self.structure[blocy][blocx] = '0'
-		if self.structure[blocy][blocx] == '0':
-			print('structure sucessfully updated')
-		else:
-			print('something went wrong')

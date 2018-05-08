@@ -127,7 +127,9 @@ while continuer:
 
 	#modifications des variables pour James avec la fonction déplacer
 	james.deplacer(keyState, plateformes)
-	james.interactions(plateformes)
+	finDuJeu = james.interactions(plateformes)
+	if finDuJeu == True:
+		continuer = 0
 
 	#actualisation des variables de la fenetre puis du personnage
 	fenetre.blit(fond, (0,0))
