@@ -161,6 +161,7 @@ class Plateformes:
 		#Chargement de l'image de la plateforme
 		plateforme = pygame.image.load(image_plateforme).convert()
 		portal = pygame.image.load(image_portal).convert_alpha()
+		epines = pygame.image.load(image_epines).convert_alpha()
 
 		#On parcourt la liste du niveau
 		num_ligne = 0
@@ -175,6 +176,8 @@ class Plateformes:
 					fenetre.blit(plateforme, (x,y)) # On affiche la plateforme sur la fenetre
 				elif sprite == 'p':
 					fenetre.blit(portal, (x,y)) # On affiche le portail sur la fenetre
+				elif sprite == 'e':
+					fenetre.blit(epines, (x,y))
 				num_case += 1
 			num_ligne += 1
 
