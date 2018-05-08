@@ -11,7 +11,7 @@ def jouer():
 	exec(open("main.py").read())
 
 
-	
+
 
 # Lecture du fichier interface
 
@@ -30,7 +30,7 @@ largeur_fenetre = 640
 hauteur_fenetre = 480
 
 # la variable fenetre prend la fonction fenetre avec succession d'images supperposables
-fenetre = pygame.display.set_mode((largeur_fenetre, hauteur_fenetre), RESIZABLE)
+fenetre = pygame.display.set_mode((largeur_fenetre, hauteur_fenetre))
 # fond prend la fonction image pygame importer
 fond = pygame.image.load("data/menu/background640x480.jpg").convert()
 
@@ -83,10 +83,10 @@ while continuer : # tant que continuer vaut 1
 	for event in pygame.event.get() : # pour les evenements pygames
 		if event.type == QUIT : # s'il y a une action quitter continuer vaut 0 fin de boucle
 			continuer = 0
-			
+
 			pygame.mixer.music.stop()
-			
-			
+
+
 		if event.type == MOUSEBUTTONUP and event.button == 1 and event.pos[1] > 100 and event.pos[1] < hauteur_fenetre-315 and event.pos[0] > 220 and event.pos[0] < largeur_fenetre-220 :
 			touchesounddown.play()
 			print("Jouer")
@@ -126,12 +126,8 @@ while continuer : # tant que continuer vaut 1
 			print("Niveaux")
 			buttonn = 1
 		if event.type == MOUSEBUTTONDOWN and event.button == 1 and event.pos[1] > 325 and event.pos[1] < hauteur_fenetre-125 and event.pos[0] > 100 and event.pos[0] < largeur_fenetre-390 :
-<<<<<<< HEAD
 			touchesoundup.play()
 			print("Démo")
-=======
-			print("Demo")
->>>>>>> 957dd524333d54d6fe1475907efeb917364e93fa
 			buttond = 1
 		if event.type == MOUSEBUTTONDOWN and event.button == 1 and event.pos[1] > 265 and event.pos[1] < hauteur_fenetre-185 and event.pos[0] > 450 and event.pos[0] < largeur_fenetre-40 :
 			touchesoundup.play()
@@ -170,3 +166,5 @@ while continuer : # tant que continuer vaut 1
 
 	if lancer_le_jeu == True:
 		jouer()
+
+	time.sleep(0.01)

@@ -21,7 +21,7 @@ if numlvl == '3':
 	level = l3
 
 # création de la fenetre et du fond de la fenetre
-fenetre = pygame.display.set_mode((level['width'], level['height']), RESIZABLE)
+fenetre = pygame.display.set_mode((level['width'], level['height']))
 fond = pygame.image.load(level['background']).convert()
 fenetre.blit(fond, (0,0)) # On place le fond sur la fenêtre
 
@@ -145,6 +145,7 @@ while continuer:
 
 	#rafraichissement de l'application
 	pygame.display.flip()
+	time.sleep(0.003)
 
 #lancement du menu du demmarage après avoir quitter le jeu
 exec(open("menu.py").read())
