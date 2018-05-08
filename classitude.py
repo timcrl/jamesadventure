@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 # Fichier contenant les classes du jeu
 
 # importation des librairies
