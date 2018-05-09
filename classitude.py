@@ -103,6 +103,10 @@ class Perso:
 			self.portailAtteint = True
 			finDuJeu = True
 
+		if plateforme.onSpines(self.x + largeur_hero, self.y + taille_hero) == True or plateforme.onSpines(self.x + largeur_hero, self.y) == True or plateforme.onSpines(self.x, self.y + taille_hero) == True or plateforme.onSpines(self.x, self.y) == True:
+			finDuJeu = True
+			time.sleep(1)
+
 		return finDuJeu
 
 # Classe gerant les projectiles
