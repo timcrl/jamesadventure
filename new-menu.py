@@ -7,21 +7,35 @@ pygame.init() #initialisation de la fenetre
 
 def jouer():
 	# Ecriture du fichier d'interface
-	with open('interface.txt', 'w') as interf:
-		interf.write(interface['niveau'] + '\n')
-		interf.write(interface['dernier_niveau'] + '\n')
-		interf.write(interface['dernier_score'] + '\n')
-		interf.write(interface['meilleur_score'] + '\n')
-		interf.write(interface['musique'] + '\n')
-		interf.write(interface['son'])
+#		interf.write(interface['niveau'] + '\n')
+#		interf.write(interface['dernier_niveau'] + '\n')
+#		interf.write(interface['dernier_score'] + '\n')
+#		interf.write(interface['meilleur_score'] + '\n')
+#		interf.write(interface['musique'] + '\n')
+#		interf.write(interface['son'])
+	interf = open("interface.txt", 'w')
+	interf.write(interface['niveau'] + '\n')
+	interf.write(interface['dernier_niveau'] + '\n')
+	interf.write(interface['dernier_score'] + '\n')
+	interf.write(interface['meilleur_score'] + '\n')
+	interf.write(interface['musique'] + '\n')
+	interf.write(interface['son'])
+	interf.close()
+	del interf
+
 	# Lancement du jeu
 	exec(open("main.py").read())
 
 
 
 # Lecture du fichier interface
-with open("interface.txt") as f:
-    content = f.readlines()
+#with open("interface.txt") as f:
+#    content = f.readlines()
+
+f = open("interface.txt", 'r')
+content = f.readlines()
+f.close()
+del f
 # Supression des '\n' a la fin des lignes
 # for x in content parcours content. La boucle dans les crochets rends le code plus compact.
 # x.strip() retourne une copie de x sans les espaces ou les retours a la ligne
@@ -49,17 +63,20 @@ hauteur_fenetre = 480
 fenetre = pygame.display.set_mode((largeur_fenetre, hauteur_fenetre), RESIZABLE) #la variable fenetre prend la fonction fenetre avec succession d'images supperposables
 fond = pygame.image.load("data/menu/background640x480.jpg").convert() #fond prend la fonction image pygame importer
 
-#chargement et collage des boutons
-#l signifie que c'est le bouton effet levé
-#e signifie que c'est le bouton effet enfoncé
+#chargement des images des boutons
 
-#numéro
+
+# numéro
 un = pygame.image.load("data/menu/1.png").convert()
 deux = pygame.image.load("data/menu/2.png").convert()
 trois = pygame.image.load("data/menu/3.png").convert()
 quatre = pygame.image.load("data/menu/4.png").convert()
 
-#jouer1
+# cadenas
+cadenasl = pygame.image.load("data/menu/cadenas levé.png").convert()
+cadenase = pygame.image.load("data/menu/cadenas enfoncé.png").convert() # Inutile
+
+# jouer1
 jouer1l = pygame.image.load("data/menu/play levé.png").convert()
 jouer1e = pygame.image.load("data/menu/play enfoncé.png").convert()
 xbuttonj1 = 130
@@ -90,30 +107,6 @@ xbuttonj4 = 130
 ybuttonj4 = 340
 Lbuttonj4 = 150
 lbuttonj4 = 30
-
-#cadenas2
-cadenas2l = pygame.image.load("data/menu/cadenas levé.png").convert()
-cadenas2e = pygame.image.load("data/menu/cadenas enfoncé.png").convert()
-xbuttonc2 = 130
-ybuttonc2 = 220
-Lbuttonc2 = 150
-lbuttonc2 = 30
-
-#cadenas 3
-cadenas3l = pygame.image.load("data/menu/cadenas levé.png").convert()
-cadenas3e = pygame.image.load("data/menu/cadenas enfoncé.png").convert()
-xbuttonc3 = 130
-ybuttonc3 = 280
-Lbuttonc3 = 150
-lbuttonc3 = 30
-
-#cadenas 4
-cadenas4l = pygame.image.load("data/menu/cadenas levé.png").convert()
-cadenas4e = pygame.image.load("data/menu/cadenas enfoncé.png").convert()
-xbuttonc4 = 130
-ybuttonc4 = 340
-Lbuttonc4 = 150
-lbuttonc4 = 30
 
 #volume
 volumeon = pygame.image.load("data/menu/volume on.png").convert()
@@ -243,7 +236,7 @@ while continuer : #tant que continuer vaut 1
 				touchesounddown.play()
 			buttonj1 = 1
 
-		if event.type == MOUSEBUTTONDOWN and event.button == 1 and event.pos[1] >ybuttonc2 and event.pos[1] < ybuttonc2+lbuttonc2 and event.pos[0] > xbuttonc2 and event.pos[0] < xbuttonc2+Lbuttonc2 :
+		if event.type == MOUSEBUTTONDOWN and event.button == 1 and event.pos[1] >ybuttonj2 and event.pos[1] < ybuttonj2+lbuttonj2 and event.pos[0] > xbuttonj2 and event.pos[0] < xbuttonj2+Lbuttonj2 :
 			if interface['son'] == 'ON':
 				touchesounddown.play()
 			buttonj2 = 1
@@ -278,27 +271,45 @@ while continuer : #tant que continuer vaut 1
 				touchesounddown.play()
 			buttoncup = 1
 
-
+	# Affichage des images statiques
 	fenetre.blit(fond, (0,0))
-	if buttonj1 == 1:
-		fenetre.blit(jouer1e, (xbuttonj1,ybuttonj1))
-	else:
-		fenetre.blit(jouer1l, (xbuttonj1,ybuttonj1))
+	fenetre.blit(jamesadventure, (170,30))
+	fenetre.blit(un, (xbuttonj1-60, ybuttonj1))
+	fenetre.blit(deux, (xbuttonj2-60, ybuttonj2))
+	fenetre.blit(trois, (xbuttonj3-60, ybuttonj3))
+	fenetre.blit (quatre, (xbuttonj4-60, ybuttonj4))
 
-	if buttonj2 == 1:
-		fenetre.blit(jouer2e, (xbuttonj2,ybuttonj2))
+	if int(interface['dernier_niveau']) >= 0:
+		if buttonj1 == 1:
+			fenetre.blit(jouer1e, (xbuttonj1,ybuttonj1))
+		else:
+			fenetre.blit(jouer1l, (xbuttonj1,ybuttonj1))
 	else:
-		fenetre.blit(jouer2l, (xbuttonj2,ybuttonj2))
+		fenetre.blit(cadenasl, (xbuttonj1,ybuttonj1))
 
-	if buttonj3 == 1:
-		fenetre.blit(jouer3e, (xbuttonj3, ybuttonj3))
+	if int(interface['dernier_niveau']) >= 1:
+		if buttonj2 == 1:
+			fenetre.blit(jouer2e, (xbuttonj2,ybuttonj2))
+		else:
+			fenetre.blit(jouer2l, (xbuttonj2,ybuttonj2))
 	else:
-		fenetre.blit(jouer3l, (xbuttonj3, ybuttonj3))
+		fenetre.blit(cadenasl, (xbuttonj2,ybuttonj2))
 
-	if buttonj4 == 1:
-		fenetre.blit(jouer4e, (xbuttonj4, ybuttonj4))
+	if int(interface['dernier_niveau']) >= 2:
+		if buttonj3 == 1:
+			fenetre.blit(jouer3e, (xbuttonj3, ybuttonj3))
+		else:
+			fenetre.blit(jouer3l, (xbuttonj3, ybuttonj3))
 	else:
-		fenetre.blit(jouer4l, (xbuttonj4, ybuttonj4))
+		fenetre.blit(cadenasl, (xbuttonj3, ybuttonj3))
+
+	if int(interface['dernier_niveau']) >= 2:
+		if buttonj4 == 1:
+			fenetre.blit(jouer4e, (xbuttonj4, ybuttonj4))
+		else:
+			fenetre.blit(jouer4l, (xbuttonj4, ybuttonj4))
+	else:
+		fenetre.blit(cadenasl, (xbuttonj4, ybuttonj4))
 
 	if interface['son'] == 'OFF':
 		fenetre.blit(volumeoff, (xbuttonv, ybuttonv))
@@ -321,15 +332,8 @@ while continuer : #tant que continuer vaut 1
 		fenetre.blit(cupl, (xbuttoncup, ybuttoncup))
 
 
-	if buttonja == 1:
-		fenetre.blit(jamesadventure, (170, 30))
-	else:
-		fenetre.blit(jamesadventure, (170,30))
 
-	fenetre.blit(un, (xbuttonj1-60, ybuttonj1))
-	fenetre.blit(deux, (xbuttonc2-60, ybuttonc2))
-	fenetre.blit(trois, (xbuttonc3-60, ybuttonc3))
-	fenetre.blit (quatre, (xbuttonc4-60, ybuttonc4))
+
 
 	pygame.display.flip() #la fenetre s'actualise
 

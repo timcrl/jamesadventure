@@ -11,8 +11,13 @@ from constantes import *
 pygame.init() # Initialisation de pygame
 
 # Lecture du niveau séléctionné dans interface.txt
-with open("interface.txt") as f:
-    content = f.readlines()
+#with open("interface.txt") as f:
+#    content = f.readlines()
+
+f = open("interface.txt", 'r')
+content = f.readlines()
+f.close()
+del f
 # Supression des '\n' a la fin des lignes
 # for x in content parcours content. La boucle dans les crochets rends le code plus compact.
 # x.strip() retourne une copie de x sans les espaces ou les retours a la ligne
@@ -188,13 +193,15 @@ if james.portailAtteint == True:
 		interface['dernier_niveau'] = interface['niveau']
 
 # Ecriture de l'interface
-with open('interface.txt', 'w') as interf:
-	interf.write(interface['niveau'] + '\n')
-	interf.write(interface['dernier_niveau'] + '\n')
-	interf.write(interface['dernier_score'] + '\n')
-	interf.write(interface['meilleur_score'] + '\n')
-	interf.write(interface['musique'] + '\n')
-	interf.write(interface['son'])
+interf = open("interface.txt", 'w')
+interf.write(interface['niveau'] + '\n')
+interf.write(interface['dernier_niveau'] + '\n')
+interf.write(interface['dernier_score'] + '\n')
+interf.write(interface['meilleur_score'] + '\n')
+interf.write(interface['musique'] + '\n')
+interf.write(interface['son'])
+interf.close()
+del interf
 
 
 #lancement du menu du demmarage après avoir quitte le jeu
