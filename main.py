@@ -11,14 +11,21 @@ from constantes import *
 pygame.init() # Initialisation de pygame
 
 # Lecture du niveau séléctionné dans interface.txt
-interface = open('interface.txt', 'r')
-numlvl = interface.read(1)
-if numlvl == '1':
+with open("interface.txt") as f:
+    content = f.readlines()
+# Supression des '\n' a la fin des lignes
+# for x in content parcours content. La boucle dans les crochets rends le code plus compact.
+# x.strip() retourne une copie de x sans les espaces ou les retours a la ligne
+content = [x.strip() for x in content]
+interface = {'niveau':content[0], 'dernier_niveau':content[1], 'dernier_score':content[2], 'meilleur_score':content[3], 'musique':content[4], 'son':content[5]}
+if interface['niveau'] == '1':
 	level = l1
-if numlvl == '2':
+if interface['niveau'] == '2':
 	level = l2
-if numlvl == '3':
+if interface['niveau'] == '3':
 	level = l3
+if interface['niveau'] == '4':
+	level = l3 # Pas encore de niveau 4 a ce jour
 
 # création de la fenetre et du fond de la fenetre
 fenetre = pygame.display.set_mode((level['width'], level['height']))
@@ -44,12 +51,19 @@ tir = False
 
 pygame.mixer.music.load(musicprinc)
 pygame.mixer.music.play(-1)
-pygame.mixer.music.set_volume(0.75)
+if interface['musique'] == 'OFF':
+	pygame.mixer.music.set_volume(0)
+elif interface['musique'] == 'ON':
+	pygame.mixer.music.set_volume(0.75)
 
 #son
 sonsaut = pygame.mixer.Sound(Ssaut)
 sontir = pygame.mixer.Sound(Stir)
 
+# Date du debut du jeu
+debut = time.time()
+
+#Boucle principale
 while continuer:
 	pygame.time.Clock().tick(30)
 
@@ -75,10 +89,12 @@ while continuer:
 			elif event.key == K_a:
 				keyState[1] = 1
 			elif event.key == K_UP:
-				sonsaut.play()
+				if interface['son'] == 'ON':
+					sonsaut.play()
 				keyState[2] = 1
 			elif event.key == K_w:
-				sonsaut.play()
+				if interface['son'] == 'ON':
+					sonsaut.play()
 				keyState[2] = 1
 			elif event.key == K_DOWN:
 				keyState[3] = 1
@@ -88,7 +104,8 @@ while continuer:
 			# ...pour un évènement sur la barre espace : tir
 			elif event.key == K_SPACE :
 				if tir == False :
-					sontir.play()
+					if interface['son'] == 'ON':
+						sontir.play()
 					if james.direction == james.droites or james.direction == james.droite1 or james.direction == james.droite2 or james.direction == james.hautd:
 						dirPer[0] = 1
 					if james.direction == james.gauches or james.direction == james.gauche1 or james.direction == james.gauche2 or james.direction == james.hautg:
@@ -150,6 +167,35 @@ while continuer:
 	#rafraichissement de l'application
 	pygame.display.flip()
 	time.sleep(0.003)
+
+
+# Calcul du dernier_score
+nbEtoiles = james.starsCollected
+tempsNiveau = time.time() - debut
+if james.portailAtteint == True:
+	interface['dernier_score'] = str(int((20000 / tempsNiveau) + (150 * nbEtoiles)))
+else:
+	interface['dernier_score'] = '0'
+
+print("score : " + interface['dernier_score'])
+# Mise a jour de l'interface
+if int(interface['dernier_score']) > int(interface['meilleur_score']):
+	interface['meilleur_score'] = interface['dernier_score']
+	print("Nouveau High Score !!!  " + interface['meilleur_score'])
+
+if james.portailAtteint == True:
+	if int(interface['niveau']) > int(interface['dernier_niveau']):
+		interface['dernier_niveau'] = interface['niveau']
+
+# Ecriture de l'interface
+with open('interface.txt', 'w') as interf:
+	interf.write(interface['niveau'] + '\n')
+	interf.write(interface['dernier_niveau'] + '\n')
+	interf.write(interface['dernier_score'] + '\n')
+	interf.write(interface['meilleur_score'] + '\n')
+	interf.write(interface['musique'] + '\n')
+	interf.write(interface['son'])
+
 
 #lancement du menu du demmarage après avoir quitte le jeu
 exec(open("new-menu.py").read())

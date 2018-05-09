@@ -6,6 +6,7 @@ from pygame.locals import * #importer les classes pygame
 pygame.init() #initialisation de la fenetre
 
 def jouer():
+	# Ecriture du fichier d'interface
 	with open('interface.txt', 'w') as interf:
 		interf.write(interface['niveau'] + '\n')
 		interf.write(interface['dernier_niveau'] + '\n')
@@ -13,7 +14,8 @@ def jouer():
 		interf.write(interface['meilleur_score'] + '\n')
 		interf.write(interface['musique'] + '\n')
 		interf.write(interface['son'])
-	exec(open("./main.py").read())
+	# Lancement du jeu
+	exec(open("main.py").read())
 
 
 
@@ -26,12 +28,16 @@ with open("interface.txt") as f:
 content = [x.strip() for x in content]
 interface = {'niveau':content[0], 'dernier_niveau':content[1], 'dernier_score':content[2], 'meilleur_score':content[3], 'musique':content[4], 'son':content[5]}
 
+
 # musique et effets sonores
 musicmenu = "data/sounds/MainMusicAcc.wav"
 Stouchedown = "data/sounds/touchedown.wav"
 Stoucheup = "data/sounds/toucheup.wav"
 pygame.mixer.music.load(musicmenu)
-pygame.mixer.music.set_volume(0.25)
+if interface['musique'] == 'OFF':
+	pygame.mixer.music.set_volume(0)
+elif interface['musique'] == 'ON':
+	pygame.mixer.music.set_volume(0.25)
 pygame.mixer.music.play(-1)
 touchesounddown = pygame.mixer.Sound(Stouchedown)
 touchesoundup = pygame.mixer.Sound(Stoucheup)
@@ -170,7 +176,8 @@ while continuer : #tant que continuer vaut 1
 			continuer = 0
 		if event.type == MOUSEBUTTONUP and event.button == 1 and event.pos[1] > ybuttonj1 and event.pos[1] < ybuttonj1+lbuttonj1 and event.pos[0] > xbuttonj1 and event.pos[0] < xbuttonj1+Lbuttonj1 :
 			print("Niveau 1")
-			touchesoundup.play()
+			if interface['son'] == 'ON':
+				touchesoundup.play()
 			interface['niveau'] = '1'
 			lancer_le_jeu = True
 			continuer = 0
@@ -180,71 +187,95 @@ while continuer : #tant que continuer vaut 1
 			interface['niveau'] = '2'
 			lancer_le_jeu = True
 			continuer = 0
-			touchesoundup.play()
+			if interface['son'] == 'ON':
+				touchesoundup.play()
 			buttonj2 = 0
 		if event.type == MOUSEBUTTONUP and event.button == 1 and event.pos[1] > ybuttonj3 and event.pos[1] < ybuttonj3+lbuttonj3 and event.pos[0] > xbuttonj3 and event.pos[0] < xbuttonj3+Lbuttonj3 :
 			print("Niveau 3")
 			interface['niveau'] = '3'
 			lancer_le_jeu = True
 			continuer = 0
-			touchesoundup.play()
+			if interface['son'] == 'ON':
+				touchesoundup.play()
 			buttonj3 = 0
 		if event.type == MOUSEBUTTONUP and event.button == 1 and event.pos[1] > ybuttonj4 and event.pos[1] < ybuttonj4+lbuttonj4 and event.pos[0] > xbuttonj4 and event.pos[0] < xbuttonj4+Lbuttonj4 :
 			print("Niveau 4")
 			interface['niveau'] = '4'
 			lancer_le_jeu = True
 			continuer = 0
-			touchesoundup.play()
+			if interface['son'] == 'ON':
+				touchesoundup.play()
 			buttonj4 = 0
 		if event.type == MOUSEBUTTONUP and event.button == 1 and event.pos[1] > ybuttonv and event.pos[1] < ybuttonv+lbuttonv and event.pos[0] > xbuttonv and event.pos[0] < xbuttonv+Lbuttonv :
 			print("Volume")
-			touchesoundup.play()
+			if interface['son'] == 'OFF':
+				interface['son'] = 'ON'
+			elif interface['son'] == 'ON':
+				interface['son'] = 'OFF'
+			if interface['son'] == 'ON':
+				touchesoundup.play()
 			buttonv = 0
 		if event.type == MOUSEBUTTONUP and event.button == 1 and event.pos[1] > ybuttonm and event.pos[1] < ybuttonm+lbuttonm and event.pos[0] > xbuttonm and event.pos[0] < xbuttonm+Lbuttonm :
 			print("Musique")
-			touchesoundup.play()
+			if interface['musique'] == 'OFF':
+				interface['musique'] = 'ON'
+				pygame.mixer.music.set_volume(0.25)
+			elif interface['musique'] == 'ON':
+				interface['musique'] = 'OFF'
+				pygame.mixer.music.set_volume(0)
+			if interface['son'] == 'ON':
+				touchesoundup.play()
 			buttonm = 0
 		if event.type == MOUSEBUTTONUP and event.button == 1 and event.pos[1] > ybuttoninfo and event.pos[1] < ybuttoninfo+lbuttoninfo and event.pos[0] > xbuttoninfo and event.pos[0] < xbuttoninfo+Lbuttoninfo :
 			print("Info")
-			touchesoundup.play()
+			if interface['son'] == 'ON':
+				touchesoundup.play()
 			buttoninfo = 0
 		if event.type == MOUSEBUTTONUP and event.button == 1 and event.pos[1] > ybuttoncup and event.pos[1] < ybuttoncup+lbuttoncup and event.pos[0] > xbuttoncup and event.pos[0] < xbuttoncup+Lbuttoncup :
 			print("Coupe")
-			touchesoundup.play()
+			if interface['son'] == 'ON':
+				touchesoundup.play()
 			buttoncup = 0
 
 
 		if event.type == MOUSEBUTTONDOWN and event.button == 1 and event.pos[1] > ybuttonj1 and event.pos[1] < ybuttonj1+lbuttonj1 and event.pos[0] > xbuttonj1 and event.pos[0] < xbuttonj1+Lbuttonj1 :
-			print("Jouer1")
-			touchesounddown.play()
+			if interface['son'] == 'ON':
+				touchesounddown.play()
 			buttonj1 = 1
+
 		if event.type == MOUSEBUTTONDOWN and event.button == 1 and event.pos[1] >ybuttonc2 and event.pos[1] < ybuttonc2+lbuttonc2 and event.pos[0] > xbuttonc2 and event.pos[0] < xbuttonc2+Lbuttonc2 :
-			print("cadenas 2")
-			touchesounddown.play()
+			if interface['son'] == 'ON':
+				touchesounddown.play()
 			buttonj2 = 1
+
 		if event.type == MOUSEBUTTONDOWN and event.button == 1 and event.pos[1] > ybuttonj3 and event.pos[1] < ybuttonj3+lbuttonj3 and event.pos[0] > xbuttonj3 and event.pos[0] < xbuttonj3+Lbuttonj3 :
-			print("cadenas 3")
-			touchesounddown.play()
+			if interface['son'] == 'ON':
+				touchesounddown.play()
 			buttonj3 = 1
+
 		if event.type == MOUSEBUTTONDOWN and event.button == 1 and event.pos[1] > ybuttonj4 and event.pos[1] <ybuttonj4+lbuttonj4 and event.pos[0] > xbuttonj4 and event.pos[0] < xbuttonj4+Lbuttonj4 :
-			print("cadenas 4")
-			touchesounddown.play()
+			if interface['son'] == 'ON':
+				touchesounddown.play()
 			buttonj4 = 1
+
 		if event.type == MOUSEBUTTONDOWN and event.button == 1 and event.pos[1] > ybuttonv and event.pos[1] < ybuttonv+lbuttonv and event.pos[0] > xbuttonv and event.pos[0] < xbuttonv+Lbuttonv :
-			print("volume")
-			touchesounddown.play()
+			if interface['son'] == 'ON':
+				touchesounddown.play()
 			buttonv = 1
+
 		if event.type == MOUSEBUTTONDOWN and event.button == 1 and event.pos[1] > ybuttonm and event.pos[1] < ybuttonm+lbuttonm and event.pos[0] > xbuttonm and event.pos[0] < xbuttonm+Lbuttonm :
-			print("musique")
-			touchesounddown.play()
+			if interface['son'] == 'ON':
+				touchesounddown.play()
 			buttonm = 1
+
 		if event.type == MOUSEBUTTONDOWN and event.button == 1 and event.pos[1] > ybuttoninfo and event.pos[1] < ybuttoninfo+lbuttoninfo and event.pos[0] > xbuttoninfo and event.pos[0] < xbuttoninfo+Lbuttoninfo :
-			print("Info")
-			touchesounddown.play()
+			if interface['son'] == 'ON':
+				touchesounddown.play()
 			buttoninfo = 1
+
 		if event.type == MOUSEBUTTONDOWN and event.button == 1 and event.pos[1] > ybuttoncup and event.pos[1] < ybuttoncup+lbuttoncup and event.pos[0] > xbuttoncup and event.pos[0] < xbuttoncup+Lbuttoncup :
-			print("Coupe")
-			touchesounddown.play()
+			if interface['son'] == 'ON':
+				touchesounddown.play()
 			buttoncup = 1
 
 
@@ -269,12 +300,12 @@ while continuer : #tant que continuer vaut 1
 	else:
 		fenetre.blit(jouer4l, (xbuttonj4, ybuttonj4))
 
-	if buttonv == 1:
+	if interface['son'] == 'OFF':
 		fenetre.blit(volumeoff, (xbuttonv, ybuttonv))
 	else:
 		fenetre.blit(volumeon, (xbuttonv, ybuttonv))
 
-	if buttonm == 1:
+	if interface['musique'] == 'OFF':
 		fenetre.blit(musiqueoff, (xbuttonm, ybuttonm))
 	else:
 		fenetre.blit(musiqueon, (xbuttonm, ybuttonm))
