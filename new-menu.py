@@ -323,7 +323,7 @@ while continuer : #tant que continuer vaut 1
 	else:
 		fenetre.blit(cadenasl, (xbuttonj3, ybuttonj3))
 
-	if int(interface['dernier_niveau']) >= 2:
+	if int(interface['dernier_niveau']) >= 3:
 		if buttonj4 == 1:
 			fenetre.blit(jouer4e, (xbuttonj4, ybuttonj4))
 		else:
