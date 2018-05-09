@@ -180,34 +180,38 @@ while continuer : #tant que continuer vaut 1
 		if event.type == QUIT : #s'il y a une action quitter continuer vaut 0 fin de boucle
 			continuer = 0
 		if event.type == MOUSEBUTTONUP and event.button == 1 and event.pos[1] > ybuttonj1 and event.pos[1] < ybuttonj1+lbuttonj1 and event.pos[0] > xbuttonj1 and event.pos[0] < xbuttonj1+Lbuttonj1 :
-			print("Niveau 1")
 			if interface['son'] == 'ON':
 				touchesoundup.play()
-			interface['niveau'] = '1'
-			lancer_le_jeu = True
-			continuer = 0
+			if int(interface['dernier_niveau']) >= 0: # On verifie que le niveau n'est pas verouille
+				print("Niveau 1")
+				interface['niveau'] = '1' # Si oui on modifie le numero du niveau a lancer
+				lancer_le_jeu = True # Et on lance le prossesus pour lancer le jeu
+				continuer = 0 # On ne continue pas la boucle
 			buttonj1 = 0
 		if event.type == MOUSEBUTTONUP and event.button == 1 and event.pos[1] > ybuttonj2 and event.pos[1] < ybuttonj2+lbuttonj2 and event.pos[0] > xbuttonj2 and event.pos[0] < xbuttonj2+Lbuttonj2 :
-			print("Niveau 2")
-			interface['niveau'] = '2'
-			lancer_le_jeu = True
-			continuer = 0
+			if int(interface['dernier_niveau']) >= 1:
+				print("Niveau 2")
+				interface['niveau'] = '2'
+				lancer_le_jeu = True
+				continuer = 0
 			if interface['son'] == 'ON':
 				touchesoundup.play()
 			buttonj2 = 0
 		if event.type == MOUSEBUTTONUP and event.button == 1 and event.pos[1] > ybuttonj3 and event.pos[1] < ybuttonj3+lbuttonj3 and event.pos[0] > xbuttonj3 and event.pos[0] < xbuttonj3+Lbuttonj3 :
-			print("Niveau 3")
-			interface['niveau'] = '3'
-			lancer_le_jeu = True
-			continuer = 0
+			if int(interface['dernier_niveau']) >= 2:
+				print("Niveau 3")
+				interface['niveau'] = '3'
+				lancer_le_jeu = True
+				continuer = 0
 			if interface['son'] == 'ON':
 				touchesoundup.play()
 			buttonj3 = 0
 		if event.type == MOUSEBUTTONUP and event.button == 1 and event.pos[1] > ybuttonj4 and event.pos[1] < ybuttonj4+lbuttonj4 and event.pos[0] > xbuttonj4 and event.pos[0] < xbuttonj4+Lbuttonj4 :
-			print("Niveau 4")
-			interface['niveau'] = '4'
-			lancer_le_jeu = True
-			continuer = 0
+			if int(interface['dernier_niveau']) >= 3:
+				print("Niveau 4")
+				interface['niveau'] = '4'
+				lancer_le_jeu = True
+				continuer = 0
 			if interface['son'] == 'ON':
 				touchesoundup.play()
 			buttonj4 = 0
@@ -355,3 +359,5 @@ while continuer : #tant que continuer vaut 1
 
 	if lancer_le_jeu == True:
 		jouer()
+
+	time.sleep(0.03) # On laisse le temps au prosesseur de faire d'autres choses
