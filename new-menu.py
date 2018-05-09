@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import pygame, time, os #importer toute la lib de pygame et time
+import webbrowser
 from pygame.locals import * #importer les classes pygame
 pygame.init() #initialisation de la fenetre
 
@@ -148,6 +149,17 @@ ybuttonja = 30
 Lbuttonja = 300
 lbuttonja = 50
 
+# Affichage des scores
+basicfont = pygame.font.SysFont(None, 36)
+score = basicfont.render('Score : ' + interface['dernier_score'], True, (255, 255, 255))
+scorerect = score.get_rect()
+scorerect.centerx = 450
+scorerect.centery = 220
+highscore = basicfont.render('Meilleur Score : ' + interface['meilleur_score'], True, (255, 255, 255))
+highscorerect = score.get_rect()
+highscorerect.centerx = 410
+highscorerect.centery = 280
+
 #Variables stockant l'etat des boutons
 buttonj1 = 0
 buttonv = 0
@@ -223,6 +235,7 @@ while continuer : #tant que continuer vaut 1
 			print("Info")
 			if interface['son'] == 'ON':
 				touchesoundup.play()
+			webbrowser.open('https://github.com/timwinner/jamesadventure')
 			buttoninfo = 0
 		if event.type == MOUSEBUTTONUP and event.button == 1 and event.pos[1] > ybuttoncup and event.pos[1] < ybuttoncup+lbuttoncup and event.pos[0] > xbuttoncup and event.pos[0] < xbuttoncup+Lbuttoncup :
 			print("Coupe")
@@ -278,6 +291,9 @@ while continuer : #tant que continuer vaut 1
 	fenetre.blit(deux, (xbuttonj2-60, ybuttonj2))
 	fenetre.blit(trois, (xbuttonj3-60, ybuttonj3))
 	fenetre.blit (quatre, (xbuttonj4-60, ybuttonj4))
+	fenetre.blit(score, scorerect)
+	fenetre.blit(highscore, highscorerect)
+
 
 	if int(interface['dernier_niveau']) >= 0:
 		if buttonj1 == 1:
