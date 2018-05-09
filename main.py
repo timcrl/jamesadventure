@@ -30,7 +30,7 @@ if interface['niveau'] == '2':
 if interface['niveau'] == '3':
 	level = l3
 if interface['niveau'] == '4':
-	level = l3 # Pas encore de niveau 4 a ce jour
+	level = l4 # Pas encore de niveau 4 a ce jour
 
 # création de la fenetre et du fond de la fenetre
 fenetre = pygame.display.set_mode((level['width'], level['height']))

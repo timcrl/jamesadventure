@@ -40,8 +40,8 @@ image_etoile = "data/images/star.png"
 
 # Dictionnaires stockant toutes les information des niveaux
 l1 = {'file':'data/levels/l1.txt', 'background':'data/images/background-dinos.png', 'width':640, 'height':480, 'platform':'data/images/planks.png'}
-l2 = {'file':'data/levels/l2.txt', 'background':'data/images/background-factory.jpg', 'width':640, 'height':480, 'platform':'data/images/planks.png'}
-l3 = {'file':'data/levels/l3.txt', 'background':'data/images/background-contempory.jpg', 'width':640, 'height':480, 'platform':'data/images/plateforme2.png'}
+l2 = {'file':'data/levels/l2.txt', 'background':'data/images/background-factory.png', 'width':640, 'height':480, 'platform':'data/images/planks.png'}
+l3 = {'file':'data/levels/l3.txt', 'background':'data/images/background-contempory.png', 'width':640, 'height':480, 'platform':'data/images/plateforme2.png'}
 l4 = {'file':'data/levels/l4.txt', 'background':'data/images/background-futuristic.png', 'width':640, 'height':480, 'platform':'data/images/plateforme2.png'}
 
 
