@@ -32,16 +32,17 @@ bdroite = "data/images/tirdroite.png"
 bhaut = "data/images/tirhaut.png"
 
 background = "data/images/background_futur.jpg" # Image de fond
-image_plateforme = "data/images/plateforme2.png" # Images d'une plateforme
+image_plateforme = "data/images/planks.png" # Images d'une plateforme
 image_portal = "data/images/portal1.png"
 image_epines = "data/images/epines3.png"
 image_etoile = "data/images/star.png"
 
 
 # Dictionnaires stockant toutes les information des niveaux
-l1 = {'file':'data/levels/l1.txt', 'background':'data/images/background640x480.jpg', 'width':640, 'height':480, 'platform':'data/images/plateforme2.png'}
-l2 = {'file':'data/levels/l2.txt', 'background':'data/images/background_futur.jpg', 'width':1080, 'height':600, 'platform':'data/images/plateforme2.png'}
-l3 = {'file':'data/levels/l3.txt', 'background':'data/images/background640x480.jpg', 'width':640, 'height':480, 'platform':'data/images/plateforme2.png'}
+l1 = {'file':'data/levels/l1.txt', 'background':'data/images/background-dinos.png', 'width':640, 'height':480, 'platform':'data/images/planks.png'}
+l2 = {'file':'data/levels/l2.txt', 'background':'data/images/background-factory.jpg', 'width':640, 'height':480, 'platform':'data/images/planks.png'}
+l3 = {'file':'data/levels/l3.txt', 'background':'data/images/background-contempory.jpg', 'width':640, 'height':480, 'platform':'data/images/plateforme2.png'}
+l4 = {'file':'data/levels/l4.txt', 'background':'data/images/background-futuristic.png', 'width':640, 'height':480, 'platform':'data/images/plateforme2.png'}
 
 
 #Musiques et sons
