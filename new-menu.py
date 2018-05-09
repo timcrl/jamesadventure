@@ -66,43 +66,43 @@ fond = pygame.image.load("data/menu/background640x480.jpg").convert() #fond pren
 #chargement des images des boutons
 
 
-# numéro
+# numero
 un = pygame.image.load("data/menu/1.png").convert()
 deux = pygame.image.load("data/menu/2.png").convert()
 trois = pygame.image.load("data/menu/3.png").convert()
 quatre = pygame.image.load("data/menu/4.png").convert()
 
 # cadenas
-cadenasl = pygame.image.load("data/menu/cadenas levé.png").convert()
-cadenase = pygame.image.load("data/menu/cadenas enfoncé.png").convert() # Inutile
+cadenasl = pygame.image.load("data/menu/cadenas leve.png").convert()
+cadenase = pygame.image.load("data/menu/cadenas enfonce.png").convert() # Inutile
 
 # jouer1
-jouer1l = pygame.image.load("data/menu/play levé.png").convert()
-jouer1e = pygame.image.load("data/menu/play enfoncé.png").convert()
+jouer1l = pygame.image.load("data/menu/play leve.png").convert()
+jouer1e = pygame.image.load("data/menu/play enfonce.png").convert()
 xbuttonj1 = 130
 ybuttonj1 = 160
 Lbuttonj1 = 150 #longueur
 lbuttonj1 = 30 #largeur
 
 #jouer2
-jouer2l = pygame.image.load("data/menu/play levé.png").convert()
-jouer2e = pygame.image.load("data/menu/play enfoncé.png").convert()
+jouer2l = pygame.image.load("data/menu/play leve.png").convert()
+jouer2e = pygame.image.load("data/menu/play enfonce.png").convert()
 xbuttonj2 = 130
 ybuttonj2 = 220
 Lbuttonj2 = 150
 lbuttonj2 = 30
 
 #jouer3
-jouer3l = pygame.image.load("data/menu/play levé.png").convert()
-jouer3e = pygame.image.load("data/menu/play enfoncé.png").convert()
+jouer3l = pygame.image.load("data/menu/play leve.png").convert()
+jouer3e = pygame.image.load("data/menu/play enfonce.png").convert()
 xbuttonj3 = 130
 ybuttonj3 = 280
 Lbuttonj3 = 150
 lbuttonj3 = 30
 
 #jouer4
-jouer4l = pygame.image.load("data/menu/play levé.png").convert()
-jouer4e = pygame.image.load("data/menu/play enfoncé.png").convert()
+jouer4l = pygame.image.load("data/menu/play leve.png").convert()
+jouer4e = pygame.image.load("data/menu/play enfonce.png").convert()
 xbuttonj4 = 130
 ybuttonj4 = 340
 Lbuttonj4 = 150
@@ -125,16 +125,16 @@ Lbuttonm = 30
 lbuttonm = 30
 
 #info
-infol = pygame.image.load("data/menu/pi levé.png").convert()
-infoe = pygame.image.load("data/menu/pi enfoncé.png").convert()
+infol = pygame.image.load("data/menu/pi leve.png").convert()
+infoe = pygame.image.load("data/menu/pi enfonce.png").convert()
 xbuttoninfo = 490
 ybuttoninfo = 400
 Lbuttoninfo = 30
 lbuttoninfo = 30
 
 #cup
-cupl = pygame.image.load("data/menu/coupe levée.png").convert()
-cupe = pygame.image.load("data/menu/coupe enfoncée.png").convert()
+cupl = pygame.image.load("data/menu/coupe levee.png").convert()
+cupe = pygame.image.load("data/menu/coupe enfoncee.png").convert()
 xbuttoncup = 550
 ybuttoncup = 400
 Lbuttoncup = 30
