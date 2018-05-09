@@ -32,7 +32,7 @@ bdroite = "data/images/tirdroite.png"
 bhaut = "data/images/tirhaut.png"
 
 background = "data/images/background_futur.jpg" # Image de fond
-image_plateforme = "data/images/planks.png" # Images d'une plateforme
+image_plateforme = "data/images/planks.png" # Inutile
 image_portal = "data/images/portal1.png"
 image_epines = "data/images/epines3.png"
 image_etoile = "data/images/star.png"

@@ -42,7 +42,7 @@ fenetre.blit(fond, (0,0)) # On place le fond sur la fenêtre
 james = Perso(pdroites, pgauches, pdroited1, pdroited2, pgauched1, pgauched2)
 
 #création des plateformes
-plateformes = Plateformes(fenetre, level['file'])
+plateformes = Plateformes(fenetre, level['file'], level['platform'])
 
 pygame.display.flip() # Raffraichissement de l'affichage après l'init
 

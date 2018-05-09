@@ -163,8 +163,9 @@ class Projectile:
 # Classe gerant l'affichage des plateformes
 class Plateformes:
 	# Initialisation
-	def __init__(self,fenetre, level):
+	def __init__(self,fenetre, level, platform_file):
 		self.fichier = level
+		self.image_plateforme = platform_file
 		#On ouvre le fichier
 		with open(self.fichier, "r") as fichier: # on ouvre le fichier de niveau
 			structure_niveau = []
@@ -185,7 +186,7 @@ class Plateformes:
 
 	def afficher(self, fenetre):
 		#Chargement de l'image de la plateforme
-		plateforme = pygame.image.load(image_plateforme).convert()
+		plateforme = pygame.image.load(self.image_plateforme).convert()
 		portal = pygame.image.load(image_portal).convert_alpha()
 		epines = pygame.image.load(image_epines).convert_alpha()
 		etoile = pygame.image.load(image_etoile).convert_alpha()
