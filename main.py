@@ -152,4 +152,4 @@ while continuer:
 	time.sleep(0.003)
 
 #lancement du menu du demmarage après avoir quitte le jeu
-exec(open("menu.py").read())
+exec(open("new-menu.py").read())
