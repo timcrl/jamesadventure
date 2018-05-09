@@ -239,7 +239,7 @@ while continuer : #tant que continuer vaut 1
 			print("Info")
 			if interface['son'] == 'ON':
 				touchesoundup.play()
-			webbrowser.open('https://github.com/timwinner/jamesadventure')
+			webbrowser.open('https://github.com/timwinner/jamesadventure/blob/master/README.md')
 			buttoninfo = 0
 		if event.type == MOUSEBUTTONUP and event.button == 1 and event.pos[1] > ybuttoncup and event.pos[1] < ybuttoncup+lbuttoncup and event.pos[0] > xbuttoncup and event.pos[0] < xbuttoncup+Lbuttoncup :
 			print("Coupe")
