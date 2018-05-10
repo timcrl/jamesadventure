@@ -265,9 +265,10 @@ class Plateformes:
 		blocy = y // taille_plateforme
 
 		# On regarde si un bloc 'm' de trouve a l'emplacement du bloc qui contient (x; y)
-		if blocx < len(self.structure[1]) and blocy < len(self.structure) : # On evite l'erreur out of range
+		if blocx < len(self.structure[1]) and blocy < len(self.structure) and blocx >= 0 and blocy >= 0: # On evite l'erreur out of range
 			if self.structure[blocy][blocx] == 'e':
 				onSpines = True
+				print("Spines : "+str(blocx)+"  "+str(blocy))
 
 		return onSpines
 
