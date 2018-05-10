@@ -28,9 +28,11 @@ Attention, à cause d'un bug encore non résolu, il est néssésaire de fermer l
 
 Il est possible de réinitialiser le jeu en inscrivant les 6 lignes suivantes dans le fichier interface.txt :
 
+```
 0
 0
 0
 0
 ON
 ON
+```
