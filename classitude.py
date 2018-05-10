@@ -98,14 +98,14 @@ class Perso:
 		if plateforme.onStar(self.x + largeur_hero, self.y + taille_hero) == True:
 			plateforme.removeStar(self.x + largeur_hero, self.y + taille_hero)
 			self.starsCollected += 1
-
+		# Detection du portail
 		if plateforme.onPortal(self.x + largeur_hero, self.y + taille_hero) == True or plateforme.onPortal(self.x + largeur_hero, self.y) == True or plateforme.onPortal(self.x, self.y + taille_hero) == True or plateforme.onPortal(self.x, self.y) == True:
-			self.portailAtteint = True
-			finDuJeu = True
-
+			self.portailAtteint = True # On garde en memoire que le portail est atteint
+			finDuJeu = True # on déclenche la fin du jeu si le prtail est atteint
+		# Detection des epines
 		if plateforme.onSpines(self.x + largeur_hero, self.y + taille_hero) == True or plateforme.onSpines(self.x + largeur_hero, self.y) == True or plateforme.onSpines(self.x, self.y + taille_hero) == True or plateforme.onSpines(self.x, self.y) == True:
-			finDuJeu = True
-			time.sleep(1)
+			finDuJeu = True # on déclenche la fin du jeu si une epine est touchee
+			time.sleep(1) # On laisse 1 seconde au joueur pour voir qu'il est mort
 
 		return finDuJeu
 
@@ -185,7 +185,7 @@ class Plateformes:
 
 
 	def afficher(self, fenetre):
-		#Chargement de l'image de la plateforme
+		#Chargement des images à afficher
 		plateforme = pygame.image.load(self.image_plateforme).convert()
 		portal = pygame.image.load(image_portal).convert_alpha()
 		epines = pygame.image.load(image_epines).convert_alpha()
@@ -204,9 +204,9 @@ class Plateformes:
 					fenetre.blit(plateforme, (x,y)) # On affiche la plateforme sur la fenetre
 				elif sprite == 'p':
 					fenetre.blit(portal, (x,y)) # On affiche le portail sur la fenetre
-				elif sprite == 'e':
+				elif sprite == 'e': # Epines
 					fenetre.blit(epines, (x,y))
-				elif sprite == 's':
+				elif sprite == 's': # Etoiles
 					fenetre.blit(etoile, (x,y))
 				num_case += 1
 			num_ligne += 1
@@ -277,4 +277,4 @@ class Plateformes:
 		blocx = x // taille_plateforme
 		blocy = y // taille_plateforme
 
-		self.structure[blocy][blocx] = '0'
+		self.structure[blocy][blocx] = '0' # On remplace ce bloc par de l'air

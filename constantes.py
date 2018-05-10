@@ -31,6 +31,7 @@ bgauche = "data/images/tirgauche.png"
 bdroite = "data/images/tirdroite.png"
 bhaut = "data/images/tirhaut.png"
 
+# Images des elements du jeu
 background = "data/images/background_futur.jpg" # Image de fond
 image_plateforme = "data/images/planks.png" # Inutile
 image_portal = "data/images/portal1.png"

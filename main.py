@@ -10,10 +10,11 @@ from constantes import *
 
 pygame.init() # Initialisation de pygame
 
-# Lecture du niveau séléctionné dans interface.txt
-#with open("interface.txt") as f:
-#    content = f.readlines()
 
+
+# Gestion de l'interface
+
+# Lecture de l'interface
 f = open("interface.txt", 'r')
 content = f.readlines()
 f.close()
@@ -23,7 +24,7 @@ del f
 # x.strip() retourne une copie de x sans les espaces ou les retours a la ligne
 content = [x.strip() for x in content]
 interface = {'niveau':content[0], 'dernier_niveau':content[1], 'dernier_score':content[2], 'meilleur_score':content[3], 'musique':content[4], 'son':content[5]}
-if interface['niveau'] == '1':
+if interface['niveau'] == '1': # On assigne à level le bon dictionnaire selon le niveau choisi
 	level = l1
 if interface['niveau'] == '2':
 	level = l2
@@ -111,6 +112,7 @@ while continuer:
 				if tir == False :
 					if interface['son'] == 'ON':
 						sontir.play()
+					# Trois connditions correspondant aux trois directions possibles du tir
 					if james.direction == james.droites or james.direction == james.droite1 or james.direction == james.droite2 or james.direction == james.hautd:
 						dirPer[0] = 1
 					if james.direction == james.gauches or james.direction == james.gauche1 or james.direction == james.gauche2 or james.direction == james.hautg:
@@ -149,8 +151,8 @@ while continuer:
 
 	#modifications des variables pour James avec la fonction déplacer
 	james.deplacer(keyState, plateformes)
-	finDuJeu = james.interactions(plateformes)
-	if finDuJeu == True:
+	finDuJeu = james.interactions(plateformes) # On apelle interactions
+	if finDuJeu == True: # On quitte le jeu si un portail ou un epine est touché
 		continuer = 0
 
 	#actualisation des variables de la fenetre puis du personnage
