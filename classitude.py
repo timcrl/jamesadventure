@@ -268,7 +268,7 @@ class Plateformes:
 		if blocx < len(self.structure[1]) and blocy < len(self.structure) and blocx >= 0 and blocy >= 0: # On evite l'erreur out of range
 			if self.structure[blocy][blocx] == 'e':
 				onSpines = True
-				print("Spines : "+str(blocx)+"  "+str(blocy))
+#				print("Spines : "+str(blocx)+"  "+str(blocy))
 
 		return onSpines
 
