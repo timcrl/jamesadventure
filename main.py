@@ -186,9 +186,12 @@ else:
 
 print("score : " + interface['dernier_score'])
 # Mise a jour de l'interface
-if int(interface['dernier_score']) > int(interface['meilleur_score']):
-	interface['meilleur_score'] = interface['dernier_score']
-	print("Nouveau High Score !!!  " + interface['meilleur_score'])
+try:
+	if int(interface['dernier_score']) > int(interface['meilleur_score']):
+		interface['meilleur_score'] = interface['dernier_score']
+		print("Nouveau High Score !!!  " + interface['meilleur_score'])
+except:
+	interface['dernier_score'] = 'T\'es NUL'
 
 if james.portailAtteint == True:
 	if int(interface['niveau']) > int(interface['dernier_niveau']):

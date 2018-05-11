@@ -151,11 +151,12 @@ lbuttonja = 50
 
 # Affichage des scores
 basicfont = pygame.font.SysFont(None, 36)
+basicfontsmall = pygame.font.SysFont(None, 25)
 score = basicfont.render('Score : ' + interface['dernier_score'], True, (255, 255, 255))
 scorerect = score.get_rect()
 scorerect.centerx = 450
 scorerect.centery = 220
-highscore = basicfont.render('Meilleur Score : ' + interface['meilleur_score'], True, (255, 255, 255))
+highscore = basicfontsmall.render('Meilleur Score : ' + interface['meilleur_score'], True, (255, 255, 255))
 highscorerect = score.get_rect()
 highscorerect.centerx = 410
 highscorerect.centery = 280
@@ -350,9 +351,6 @@ while continuer : #tant que continuer vaut 1
 		fenetre.blit(cupe, (xbuttoncup, ybuttoncup))
 	else:
 		fenetre.blit(cupl, (xbuttoncup, ybuttoncup))
-
-
-
 
 
 	pygame.display.flip() #la fenetre s'actualise
