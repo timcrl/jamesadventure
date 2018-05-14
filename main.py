@@ -3,7 +3,7 @@
 
 #import des librairies
 import pygame
-import time
+import time, os
 from pygame.locals import *
 from classitude import *
 from constantes import *
@@ -210,4 +210,5 @@ del interf
 
 
 #lancement du menu du demmarage après avoir quitte le jeu
-exec(open("new-menu.py").read())
+#exec(open("new-menu.py").read())
+os.system("start /B python new-menu.py")
