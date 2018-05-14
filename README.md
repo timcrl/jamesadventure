@@ -1,4 +1,4 @@
-# JamesAdventure
+﻿# JamesAdventure
 
 Ce jeu à été crée dans le cadre d'un projet scolaire.
 
@@ -20,7 +20,7 @@ Dans les niveaux, il existe plusieurs types d'élements :
 
 -Les étoiles, que James peut ramasser. Elles permettent d'obtenir un bonus de score.
 
-James peut se déplacer à droite et à gauche en utilisant les flèches ou les touches W et D. Il peut sauter grâce à la flèche haut ou la touche Z, et il peut lancer une boule de feu grâce à la touche ESPACE.
+James peut se déplacer à droite et à gauche en utilisant les flèches ou les touches Q et D. Il peut sauter grâce à la flèche haut ou la touche Z, et il peut lancer une boule de feu grâce à la touche ESPACE.
 
 Le score est inversement proportionnel au temps mis pour finir le niveau. En bref, plus le temps mis pour finir le niveau est long, plus le score est bas. Par ailleurs, chaque étoile rapporte un bonus de 150 points. Si James meurt sans finir le niveau, le score est de 0.
 
