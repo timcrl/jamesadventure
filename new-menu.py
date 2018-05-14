@@ -25,7 +25,8 @@ def jouer():
 	del interf
 
 	# Lancement du jeu
-	exec(open("main.py").read())
+#	exec(open("main.py").read())
+	os.system("start /B python main.py")
 
 
 
